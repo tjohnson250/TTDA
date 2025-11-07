@@ -3,9 +3,14 @@ title: "Target Trial Design Assistant Launch Page"
 author: "Todd R. Johnson"
 format: html
 editor: visual
+bibliography: references.bib
 ---
 
 This is main launch page to the latest version of an AI-powered Claude tool that will help you design a study to estimate causal effects from observational data.
+
+The tool uses the TARGET guidelines [@cashin2025] to walk you through the elements needed to design an ideal pragmatic clinical trial and then how to emulate that trial using observational data.
+
+I developed this tool based on our review of tools for supporting target trial emulations, which showed that there were no tools to support the early, and most critical, stages of target trial emulation–clearly specifying the causal question and the study design. Many tools support the identification and estimation phases, but without a well-defined causal question and study design, even the best analysis will produce poor results.
 
 This page will always link to the latest version of the tool. Claude changes the URL for each version, so it is best to bookmark this page.
 

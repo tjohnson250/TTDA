@@ -1,9 +1,15 @@
 ---
-title: "TTDA"
+title: "Target Trial Design Assistant Launch Page"
 author: "Todd R. Johnson"
 format: html
 editor: visual
 ---
+
+This is main launch page to the latest version of an AI-powered Claude tool that will help you design a study to estimate causal effects from observational data.
+
+This page will always link to the latest version of the tool. Claude changes the URL for each version, so it is best to bookmark this page.
+
+Once you click below, you will be asked to log in to Claude.ai. You must have a paid account to use the tool and your usage counts against your credit. However, in my opinion Claude is well worth the price and Claude Pro is sufficient for normal use.
 
 ```{=html}
 <iframe src="https://claude.site/public/artifacts/e6d45ee9-f72c-4863-8ae4-6672f0f41f5f/embed" title="Claude Artifact" width="100%" height="600" frameborder="0" allow="clipboard-write" allowfullscreen></iframe>

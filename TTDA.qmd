@@ -16,6 +16,10 @@ This page will always link to the latest version of the tool. Claude changes the
 
 Once you click below, you will be asked to log in to Claude.ai. You must have a paid account to use the tool and your usage counts against your credit. However, in my opinion Claude is well worth the price and Claude Pro is sufficient for normal use.
 
+Please provide feedback at the GitHub repo: <https://github.com/tjohnson250/TTDA>
+
+or by emailing me at todd.r.johnson\@uth.tmc.edu
+
 ```{=html}
 <iframe src="https://claude.site/public/artifacts/e6d45ee9-f72c-4863-8ae4-6672f0f41f5f/embed" title="Claude Artifact" width="100%" height="600" frameborder="0" allow="clipboard-write" allowfullscreen></iframe>
 ```

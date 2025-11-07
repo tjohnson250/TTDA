@@ -1,0 +1,10 @@
+---
+title: "TTDA"
+author: "Todd R. Johnson"
+format: html
+editor: visual
+---
+
+```{=html}
+<iframe src="https://claude.site/public/artifacts/e6d45ee9-f72c-4863-8ae4-6672f0f41f5f/embed" title="Claude Artifact" width="100%" height="600" frameborder="0" allow="clipboard-write" allowfullscreen></iframe>
+```

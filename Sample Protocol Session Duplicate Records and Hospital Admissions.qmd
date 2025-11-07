@@ -1,0 +1,860 @@
+---
+title: "Effect of Duplicate EHR Records on Hospital Admissions"
+author: "Todd R. Johnson"
+format: html
+editor: visual
+bibliography: references.bib
+---
+
+This is a sample session where I used the [TARGET Trial Design Assistant (TTDA)](https://tjohnson250.github.io/TTDA/TTDA.html) to develop a observational study design to estimate the causal effect of duplicate patient records on hospital admissions. This study is based on work that looked at the association among various factors and whether or not a patient had a duplicate record. @sahin2024
+
+This is just one run of many that I did while debugging and improving TTDA. It is worth working through TTDA with the same research question multiple times, because each time the tool can offer different suggestions and past sessions will often lead to changing in your thinking about how to design the best study or studies.
+
+In this case we are validating a version of this study that we designed without TTDA. Using TTDA surfaced a number of issues that we are now considering during the analysis phase.
+
+Limitations:
+
+-   TTDA does not currently produce a summary of the protocol
+
+-   You must save or download the entire chat and then build the summary from the chat
+
+I encourage you to try TTDA and send feedback either to me at todd.r.johnson\@uth.tmc.edu or through the GitHub repo: <https://github.com/tjohnson250/TTDA>
+
+# TARGET TRIAL PROTOCOL
+
+# Effect of Duplicate Records on Hospital Admission
+
+**Generated:** 11/7/2025, 3:34:09 PM
+
+------------------------------------------------------------------------
+
+## RESEARCH QUESTION
+
+The effect of duplicate EHR records on hospital admissions
+
+------------------------------------------------------------------------
+
+## TARGET TRIAL SPECIFICATION (Items 6a-h)
+
+This section defines the pragmatic randomized clinical trial that could actually be conducted.
+
+### Summary of Protocol Elements
+
+**Item 6a: Eligibility Criteria** Defines the target population and inclusion/exclusion criteria.
+
+**Item 6b: Treatment Strategies**\
+Specifies the interventions compared, including dosage, timing, duration, and decision rules.
+
+**Item 6c: Random Assignment** Eligible individuals would be randomly assigned to treatment strategies and aware of their allocation.
+
+**Item 6d: Follow-up Period** Follow-up starts at time zero (assignment) and specifies when it ends.
+
+**Item 6e: Outcomes** Describes how and when outcomes are measured.
+
+**Item 6f: Causal Contrasts** Specifies intention-to-treat and/or per-protocol effects, effect measures, and handling of competing events.
+
+**Item 6g: Assumptions** Identifies assumptions needed to identify each causal estimand.
+
+**Item 6h: Analysis Plan** Describes data analysis procedures, including handling of missing data and sensitivity analyses.
+
+------------------------------------------------------------------------
+
+## TARGET TRIAL EMULATION (Items 7a-h)
+
+This section describes how the target trial specification is mapped to observational data.
+
+### Summary of Emulation Elements
+
+**Item 7a: Operationalizing Eligibility** How eligibility criteria are identified in the data (codes, algorithms, etc.).
+
+**Item 7b: Operationalizing Treatment Strategies** How treatment strategies are ascertained from the data.
+
+**Item 7c: Operationalizing Assignment** How individuals are classified into treatment strategies at time zero.
+
+**Item 7d: Operationalizing Follow-up** How time zero and end of follow-up are determined in the data.
+
+**Item 7e: Operationalizing Outcomes** How outcomes are ascertained from the data.
+
+**Item 7f: Operationalizing Causal Contrasts** How intention-to-treat and per-protocol effects are estimated.
+
+**Item 7g: Operationalizing Assumptions** Baseline confounders and variables for handling missing data and competing events.
+
+**Item 7h: Operationalizing Analysis** Actual analysis methods, software, models, and sensitivity analyses.
+
+------------------------------------------------------------------------
+
+## COMPLETE CONVERSATION LOG
+
+The following is the complete conversation between researcher and methodologist that developed this protocol.
+
+### METHODOLOGIST
+
+Welcome! I'm your TARGET Trial Design Assistant. I'll help you develop a well-specified observational study design following the TARGET (Transparent Reporting of Observational Studies Emulating a Target Trial) framework.
+
+We'll work through two phases:
+
+1.  **Target Trial Specification** - Define a PRAGMATIC CLINICAL TRIAL that could actually be conducted. This is not a theoretical ideal trial, but a realistic randomized trial you could run with real patients and feasible procedures.
+
+2.  **Target Trial Emulation** - Map that pragmatic trial design to your observational data.
+
+**Critical concept:** Throughout this process, we'll pay special attention to TIME ZERO - the single point in time when: - Eligibility criteria are met - Treatment is assigned\
+- Follow-up begins
+
+Getting time zero right prevents immortal time bias and other design flaws that plague observational studies.
+
+Let's start! What research question would you like to address? Please describe: - The intervention or exposure you're interested in - The outcome(s) you want to study - The population you're studying
+
+### RESEARCHER
+
+The effect of duplicate EHR records on hospital admissions
+
+### METHODOLOGIST
+
+Thanks for sharing your research interest! I can see you're looking at duplicate EHR records and their effect on hospital admissions. To help you develop a strong TARGET design, I need to understand your research question more precisely.
+
+Could you clarify a few things:
+
+1.  **What exactly do you mean by "duplicate EHR records"?** Are these:
+    -   Patients with multiple medical record numbers in the same health system?
+    -   Duplicate entries for the same patient encounter?
+    -   Something else?
+2.  **What's your hypothesis about the direction of effect?** Do you think duplicate records:
+    -   Increase hospital admissions (perhaps due to fragmented care, missed information)?
+    -   Decrease admissions (maybe due to access barriers)?
+    -   Have some other effect?
+3.  **What population are you studying?** For example:
+    -   All patients in a health system?
+    -   Patients with specific conditions?
+    -   New patients vs. established patients?
+4.  **What type of hospital admissions are you interested in?**
+    -   Any admission?
+    -   Emergency admissions specifically?
+    -   Admissions for certain conditions?
+
+Understanding these details will help us design a pragmatic target trial that addresses your specific research question effectively.
+
+### RESEARCHER
+
+Duplicate records are patients with multiple MRNs in the same health system. We found a positive association between duplicates and hospital admissions in an earlier (non-causal) study. We are studying all patients. We consider any hospital admission as an admission.
+
+### METHODOLOGIST
+
+Excellent, that clarifies your research question! You're studying whether having duplicate MRNs (multiple medical record numbers for the same patient) causally increases hospital admissions compared to having a single MRN.
+
+Now let's design your TARGET trial specification. We'll start with **Item 6a: Eligibility Criteria**.
+
+For your pragmatic target trial, we need to define:
+
+**WHO would be eligible to participate?** Think about this as a real randomized trial you could actually conduct. Consider:
+
+-   **Patient characteristics**: Age ranges? Any exclusions based on medical conditions?
+-   **Health system relationship**: New patients only? Established patients? Both?
+-   **Timing requirements**: When exactly does someone become eligible? (This is crucial for TIME ZERO)
+
+For example, you might specify eligibility as: - "Adult patients (≥18 years) presenting for their first encounter at \[Health System X\]" - "Patients aged 18-89 with at least one prior encounter, presenting for a new episode of care"
+
+**Remember**: TIME ZERO is the exact moment when eligibility criteria are MET (not assessed). This is when someone actually becomes eligible, treatment would be assigned, and follow-up would begin - all at the same instant.
+
+What eligibility criteria make sense for your pragmatic trial studying duplicate vs. single MRNs?
+
+### RESEARCHER
+
+Eligible patients are those with at least one prior encounter and no history of ever having a duplicate record.
+
+### METHODOLOGIST
+
+Good start! This helps define the baseline population. Now let's refine this to create clear eligibility criteria for your pragmatic target trial.
+
+I have a few questions to make this more precise:
+
+1.  **TIME ZERO definition**: When exactly does someone become eligible? Is it:
+
+    -   At the moment they present for their second encounter (having had one prior encounter and no duplicate history)?
+    -   At some other specific time point?
+
+2.  **Age restrictions**: Any minimum/maximum age limits for this pragmatic trial?
+
+3.  **"No history of duplicate record"**: How far back does this history need to go?
+
+    -   Since first encounter at the health system?
+    -   Within a specific time window?
+    -   All available historical data?
+
+4.  **Encounter types**: Does "prior encounter" include any type of visit (outpatient, ED, inpatient) or specific types?
+
+**Remember**: We need eligibility criteria that can be determined at a precise moment in time - this becomes our TIME ZERO when treatment assignment would occur and follow-up would begin.
+
+Could you help clarify these details so we can nail down exactly when someone becomes eligible for randomization in your target trial?
+
+### RESEARCHER
+
+They would be eligible the moment they present for their second encounter. No age restrictions. For history of duplicates we will go back to the first encounter in the system. Prior encounter should be any type of visit.
+
+### METHODOLOGIST
+
+Perfect! Let me confirm your eligibility criteria:
+
+**Item 6a: Eligibility Criteria** - Patients presenting for their second encounter at the health system (any type of visit) - No age restrictions - No history of duplicate records since their first encounter in the system
+
+**TIME ZERO**: The moment a patient presents for their second encounter (having met the above criteria).
+
+This is good - TIME ZERO is clearly defined as a specific moment when eligibility criteria are met, and this is when treatment assignment and follow-up would begin.
+
+**Confirmed?** If this looks right, we'll move to the next item.
+
+Now let's define **Item 6b: Treatment Strategies**.
+
+In your pragmatic randomized trial, patients eligible at TIME ZERO would be randomly assigned to one of two treatment strategies:
+
+1.  **Strategy 1**: Patient gets assigned a single MRN (no duplicate created)
+2.  **Strategy 2**: Patient gets assigned a duplicate MRN (new MRN created, so they have multiple MRNs)
+
+**Key questions**: - Does this capture what you want to compare? - In the "duplicate MRN" group, would they keep their original MRN AND get a new one? - How would duplicate MRN assignment actually work in practice in your pragmatic trial?
+
+What are your thoughts on these treatment strategies?
+
+### RESEARCHER
+
+Patients keep their original MRN and the data in it, but a new MRN (new EHR record for the same person) is also created. That new record would contain duplicate demographics and any additional data collected in that encounter, but no prior data.
+
+### METHODOLOGIST
+
+Excellent! Let me confirm your treatment strategies:
+
+**Item 6b: Treatment Strategies** - **Strategy 1 (Control)**: Patient continues with single existing MRN - all encounter data added to original record - **Strategy 2 (Intervention)**: Patient gets duplicate MRN created at TIME ZERO - keeps original MRN with all historical data, but new MRN is created containing duplicate demographics plus any new encounter data (no historical data transferred)
+
+This clearly defines what would happen at the moment of randomization (TIME ZERO).
+
+**Confirmed?**
+
+Now let's move to **Item 6c: Randomization**.
+
+For your pragmatic trial, we need to specify:
+
+1.  **Randomization ratio**: 1:1 (equal allocation) or something else?
+2.  **Stratification**: Would you stratify randomization by any factors? For example:
+    -   Type of encounter (outpatient vs. ED vs. inpatient)
+    -   Department/clinic
+    -   Time period
+    -   Patient characteristics
+3.  **Allocation concealment**: How would randomization be implemented in practice?
+
+In a real-world pragmatic trial, this might be done through the EHR system automatically at the moment of check-in.
+
+What randomization approach makes most sense for your trial?
+
+### RESEARCHER
+
+Duplicates are rare in the real world, so can we design this so that only 5% of patients are randomized to the duplicate arm?
+
+### METHODOLOGIST
+
+Absolutely! That makes perfect sense given the real-world prevalence you want to match.
+
+**Item 6c: Randomization** - **Randomization ratio**: 95:5 (95% to single MRN, 5% to duplicate MRN) - This reflects the rarity of duplicates in real-world practice
+
+A few follow-up questions to complete the randomization specification:
+
+1.  **Stratification**: Would you stratify the randomization by any factors? For example:
+    -   Type of second encounter (outpatient, ED, inpatient)?
+    -   Department or clinic?
+    -   Time of day/week?
+    -   Or simple randomization without stratification?
+2.  **Implementation**: In your pragmatic trial, how would this 95:5 randomization be implemented? For instance:
+    -   Automated through EHR system at check-in?
+    -   Research staff using randomization system?
+    -   Some other method?
+
+The key is that it happens exactly at TIME ZERO when the patient presents for their second encounter.
+
+What approach would work best for your pragmatic trial design?
+
+### RESEARCHER
+
+No stratification. Randomization would be automated through the EHR check in system.
+
+### METHODOLOGIST
+
+Perfect! Let me confirm your randomization:
+
+**Item 6c: Randomization** - 95:5 allocation ratio (95% single MRN, 5% duplicate MRN) - No stratification - Automated through EHR check-in system at TIME ZERO (moment of second encounter presentation)
+
+**Confirmed!**
+
+Now let's define **Item 6d: Follow-up**.
+
+This is crucial because follow-up must begin exactly at TIME ZERO - the same moment when eligibility criteria are met and treatment is assigned.
+
+Key questions for your pragmatic trial:
+
+1.  **Follow-up start**: Begins at TIME ZERO (moment of second encounter presentation) - correct?
+
+2.  **Follow-up duration**: How long would you follow patients? For example:
+
+    -   30 days? 90 days? 1 year?
+    -   Until a specific event occurs?
+
+3.  **Follow-up procedures**: What data would be collected during follow-up?
+
+    -   Hospital admissions through EHR/administrative data?
+    -   Active patient contact?
+    -   Claims data linkage?
+
+4.  **End of follow-up**: What would end follow-up early?
+
+    -   Death, disenrollment from health system, end of study period?
+
+What follow-up period and procedures make sense for studying the effect on hospital admissions?
+
+### RESEARCHER
+
+Follow-up starts at the moment of the second encounter. We will follow patients for 3 years or until an admission occurs. This data is in our integrated PCOR CDM clinical data warehouse. We do not have complete death data, but if we do get a record of death, we will need to consider how to handle competing events.
+
+### METHODOLOGIST
+
+Excellent! Let me confirm your follow-up:
+
+**Item 6d: Follow-up** - Starts at TIME ZERO (moment of second encounter presentation) - Duration: 3 years or until hospital admission occurs (whichever comes first) - Data source: Integrated PCOR CDM clinical data warehouse - Incomplete death data available (competing events consideration noted)
+
+**Confirmed!**
+
+Now let's define **Item 6e: Primary Outcome**.
+
+For your pragmatic trial studying hospital admissions:
+
+1.  **Outcome definition**: What exactly counts as a "hospital admission"?
+    -   Any inpatient admission?
+    -   Only unscheduled/emergency admissions?
+    -   Exclude same-day procedures?
+    -   Include observation stays?
+2.  **Outcome measurement**: How would this be captured in your PCOR CDM?
+    -   Specific encounter types or admission codes?
+    -   Any exclusions (e.g., planned procedures)?
+3.  **Time-to-event vs. binary**: Since you're following until admission occurs, this sounds like:
+    -   Time to first hospital admission (survival analysis)
+    -   Is that correct?
+4.  **Competing events**: You mentioned death - would you treat this as:
+    -   Censoring event?
+    -   Competing risk?
+    -   Combined endpoint?
+
+What's your preferred primary outcome specification?
+
+### RESEARCHER
+
+Hospital admission is any inpatient admission. We should exclude admissions on the same day as time zero. We have admission codes in our CDM. We would like to measure time to event and also look at the risk difference. Death will be treated as a competing event.
+
+### METHODOLOGIST
+
+Perfect! Let me confirm your primary outcome:
+
+**Item 6e: Primary Outcome** - Any inpatient admission (identified by admission codes in PCOR CDM) - Excludes admissions on same day as TIME ZERO - Time-to-event analysis (time to first hospital admission) - Also examine risk difference - Death treated as competing event
+
+**Confirmed!**
+
+Now let's define **Item 6f: Estimand/Contrasts**.
+
+This specifies exactly what you want to estimate from your pragmatic trial. Based on your outcome definition:
+
+1.  **Primary contrast**: What comparison are you most interested in?
+    -   Hazard ratio (duplicate MRN vs. single MRN for time to admission)?
+    -   Risk difference at specific time points (e.g., 30 days, 1 year, 3 years)?
+    -   Both?
+2.  **Time horizons**: For risk differences, at what time points?
+    -   30 days, 90 days, 1 year, 3 years?
+3.  **Competing events handling**: For the estimand with death as competing event:
+    -   Cause-specific hazard ratio (treating death as censoring)?
+    -   Cumulative incidence with competing risks?
+    -   Both approaches?
+
+What would be your primary estimand of interest?
+
+### RESEARCHER
+
+Hernan has warned against using hazard ratios and also against methods that assume proportional hazards. Is there an alternative?
+
+### METHODOLOGIST
+
+Absolutely! You're wise to heed Hernán's guidance. He advocates for more interpretable measures that don't rely on proportional hazards assumptions.
+
+Better alternatives for your estimand:
+
+1.  **Risk difference at specific time points** (most interpretable):
+    -   E.g., "At 1 year, the difference in probability of hospital admission between duplicate MRN vs. single MRN groups"
+    -   Can calculate at multiple time points: 30 days, 6 months, 1 year, 3 years
+2.  **Risk ratio at specific time points**:
+    -   "At 1 year, the ratio of admission probabilities between groups"
+3.  **Restricted mean survival time difference**:
+    -   Difference in average time to admission up to a specific time point (e.g., 3 years)
+
+With competing events (death), you'd use **cumulative incidence functions** rather than Kaplan-Meier, which properly accounts for competing risks without proportional hazards assumptions.
+
+**Hernán's preference** is typically risk differences at clinically meaningful time points - they're most interpretable and policy-relevant.
+
+Which approach appeals to you? Risk differences at specific time points (e.g., 30 days, 1 year) using cumulative incidence with competing risks?
+
+### RESEARCHER
+
+Let's use the risk difference at specific time points. Can we do that for each month? We can do several analyses and see if they generally give the same result. For example, we can also use RSMD.
+
+### METHODOLOGIST
+
+Excellent choice! That's exactly the approach Hernán would recommend.
+
+**Item 6f: Estimands/Contrasts** - **Primary**: Risk difference at specific time points (monthly intervals: 1 month, 2 months, 3 months, etc. up to 36 months) - Risk difference = P(admission by time t \| duplicate MRN) - P(admission by time t \| single MRN) - Calculated using cumulative incidence functions accounting for death as competing event - **Secondary**: Restricted mean survival time difference (RMST) as sensitivity analysis - Multiple time points allow assessment of consistency across follow-up period
+
+**Confirmed!**
+
+Now let's move to **Item 6g: Key Assumptions**.
+
+For your pragmatic target trial, what key assumptions would you need to make? Consider:
+
+1.  **Exchangeability**: Random assignment ensures groups are comparable at baseline
+
+2.  **Positivity**: Both treatment strategies are feasible for eligible patients
+
+3.  **No interference**: One patient's treatment assignment doesn't affect another's outcomes
+
+4.  **Measurement assumptions**:
+
+    -   Hospital admissions captured completely in your data warehouse
+    -   Duplicate MRN creation works as intended
+
+Are there any other key assumptions or potential violations you're concerned about for this pragmatic trial design?
+
+### RESEARCHER
+
+This is good.
+
+### METHODOLOGIST
+
+Great! Let me confirm your key assumptions:
+
+**Item 6g: Key Assumptions** - Exchangeability (random assignment ensures comparable groups) - Positivity (both treatment strategies feasible for eligible patients) - No interference (one patient's assignment doesn't affect others) - Complete capture of hospital admissions in data warehouse - Duplicate MRN creation functions as intended
+
+**Confirmed!**
+
+Now for the final specification item - **Item 6h: Analysis Plan**.
+
+For your pragmatic trial, specify the statistical approach:
+
+1.  **Primary analysis method**: How would you estimate the risk differences?
+
+    -   Cumulative incidence functions with competing risks (Fine-Gray, Aalen-Johansen)?
+    -   Confidence intervals and significance testing approach?
+
+2.  **Secondary analyses**:
+
+    -   RMST analysis method?
+    -   Any subgroup analyses?
+
+3.  **Missing data handling**: How would you handle:
+
+    -   Lost to follow-up?
+    -   Missing baseline covariates?
+
+4.  **Multiple comparisons**: With monthly risk differences (36 time points), any adjustment planned?
+
+5.  **Sensitivity analyses**: Beyond RMST, any other robustness checks?
+
+What analysis approach would you use in your pragmatic trial?
+
+### RESEARCHER
+
+For 1 and 2 we can use both methods. For the secondary analysis we will not do subgroup analysis. We will need to adjust for loss to follow-up and also cases where those in the non-duplicate arm happen to get a duplicate. How can we adjust for multiple comparisons?
+
+### METHODOLOGIST
+
+Excellent points! Let me address your multiple comparisons question and confirm the analysis plan.
+
+**Multiple comparisons options:**
+
+1.  **Bonferroni correction**: Divide α by number of tests (very conservative for 36 monthly comparisons)
+
+2.  **False Discovery Rate (FDR)**: Controls expected proportion of false discoveries (less conservative, often preferred)
+
+3.  **Focus on key time points**: Pre-specify a few clinically important times (e.g., 30 days, 6 months, 1 year, 3 years) for formal testing
+
+4.  **Graphical presentation**: Plot all monthly estimates with confidence intervals - patterns often speak for themselves without formal testing at each point
+
+**Hernán's typical approach**: Focus on a few pre-specified time points for formal inference, but show all monthly estimates graphically to assess consistency.
+
+**Item 6h: Analysis Plan** - Primary: Cumulative incidence functions with competing risks (Aalen-Johansen and Fine-Gray methods) - Secondary: RMST analysis (no subgroups) - Handle loss to follow-up and treatment switches (non-duplicate→duplicate) - Multiple comparisons: \[Your choice from above options\] - Sensitivity analyses beyond RMST
+
+Which multiple comparisons approach appeals to you?
+
+### RESEARCHER
+
+Lets use FDR and also graphical presentation.
+
+### METHODOLOGIST
+
+Perfect! Let me confirm your complete analysis plan:
+
+**Item 6h: Analysis Plan** - **Primary**: Cumulative incidence functions with competing risks (both Aalen-Johansen and Fine-Gray methods) - **Secondary**: RMST analysis (no subgroup analyses) - **Missing data**: Adjust for loss to follow-up and treatment switches (non-duplicate→duplicate) - **Multiple comparisons**: False Discovery Rate (FDR) control + graphical presentation of all monthly risk differences with confidence intervals - **Sensitivity analyses**: RMST and other robustness checks
+
+**Confirmed!**
+
+🎉 **Your target trial specification is complete!**
+
+You've designed a well-specified pragmatic randomized trial with: - Clear TIME ZERO definition (second encounter presentation) - Realistic treatment strategies (95:5 randomization to single vs. duplicate MRN) - Appropriate follow-up and outcomes - Sound statistical analysis plan following Hernán's recommendations
+
+**Now let's move to emulation.** We'll specify how to use your observational data to emulate this target trial design.
+
+Ready to start the emulation phase?
+
+### RESEARCHER
+
+yes
+
+### METHODOLOGIST
+
+Excellent! Now we'll map your target trial specification to your observational data. This is where we operationalize each component using what's actually available in your PCOR CDM.
+
+Let's start with **Item 7a: Eligibility Operationalization**.
+
+You specified that eligible patients are those presenting for their second encounter with no history of duplicates. Now we need to define how to identify these patients in your observational data:
+
+**Key questions:**
+
+1.  **Encounter identification**: In your PCOR CDM, how will you identify:
+    -   What constitutes an "encounter" (specific encounter types, visit codes)?
+    -   How to determine encounter chronology (first vs. second encounter)?
+2.  **Duplicate history detection**: How will you operationally identify patients with "no history of duplicate records"?
+    -   Do you have flags or algorithms in your CDM for duplicate detection?
+    -   How will you link records that belong to the same patient?
+3.  **TIME ZERO identification**: How will you pinpoint the exact moment of the second encounter in your data?
+    -   Encounter start timestamp?
+    -   Registration/check-in time?
+4.  **Data completeness**: Any time period restrictions for reliable encounter/duplicate detection?
+
+How will you operationally identify your eligible population in the observational data?
+
+### RESEARCHER
+
+We have an encounters table. Any encounter in that table would count.
+
+### METHODOLOGIST
+
+Good start! Let me get more specifics about operationalizing eligibility in your encounters table:
+
+1.  **Chronological ordering**: How will you determine first vs. second encounter?
+    -   By encounter start date/time?
+    -   Any specific date field you'll use for ordering?
+2.  **TIME ZERO precision**: What timestamp will define the exact moment of the second encounter?
+    -   Encounter start datetime?
+    -   Admission datetime?
+    -   Registration datetime?
+3.  **Duplicate history detection**: This is crucial - how will you identify patients with "no history of duplicate records" using your observational data?
+    -   Do you have patient linking tables that show which encounters belong to the same person?
+    -   How will you detect if someone had duplicates before their second encounter?
+    -   Is there a master patient index or linkage algorithm?
+4.  **Time window**: Any restrictions on the date range for reliable data?
+    -   When does your encounters table have complete coverage?
+    -   How far back can you reliably detect duplicate history?
+
+The duplicate detection piece is especially important since this determines who's eligible at baseline.
+
+### RESEARCHER
+
+To identify duplicate records, we have a master patient index that can tell us when duplicates were created and when they were eliminated (the two records were merged back into 1). We have encounter dates for temporal ordering. For the study period, we will consider 1/1/2010 to 12/1/2019
+
+### METHODOLOGIST
+
+Excellent! That master patient index is crucial. Let me confirm your eligibility operationalization:
+
+**Item 7a: Eligibility Operationalization** - **Encounters**: Any record in encounters table - **Chronological ordering**: By encounter date - **TIME ZERO**: Encounter date of second encounter - **Duplicate history**: Master patient index to identify patients with no duplicate creation before their second encounter - **Study period**: 1/1/2010 - 12/1/2019 - **Algorithm**: Identify patients whose second encounter falls within study period AND master patient index shows no prior duplicate record creation
+
+**Confirmed?**
+
+Now let's move to **Item 7b: Treatment Assignment Operationalization**.
+
+In your target trial, patients were randomized 95:5 to single vs. duplicate MRN. But in observational data, you need to classify patients based on what actually happened.
+
+**Key questions:** 1. **Treatment classification**: How will you determine if someone was "treated" with duplicate vs. single MRN? - Using master patient index to see if duplicate was created at/after TIME ZERO? - Any specific time window around TIME ZERO for duplicate creation?
+
+2.  **Timing precision**: If duplicate creation happens close to but not exactly at second encounter, how will you handle this?
+
+How will you operationally assign patients to duplicate vs. single MRN groups using your observational data?
+
+### RESEARCHER
+
+We can use a patient's earliest encounter in the study period as their entry into the cohort as long as they meet the eligibility criteria. Also, we probably want to do a nested sequential trial, so patients in the control arm could later participate as patients in the duplicate arm. However, patients in the duplicate arm cannot switch treatments, because even if their duplicate is eliminated, the fact that they had a duplicate many have effects on later admissions.
+
+### METHODOLOGIST
+
+This is a great insight! You're moving toward a more sophisticated design. Let me clarify what you're proposing:
+
+**Sequential trial design**: Patients can enter the study multiple times as they become eligible, but with restrictions based on treatment history.
+
+**Key clarification needed**: When exactly does someone get "treated" with a duplicate MRN?
+
+You mentioned "earliest encounter in the study period" but your eligibility requires "second encounter." Are you saying:
+
+1.  **Entry criterion**: Patient's second encounter during the study period (1/1/2010 - 12/1/2019)?
+2.  **Treatment assignment**: Based on whether a duplicate MRN was created at/around that second encounter?
+
+**Sequential trial logistics**: - Someone in "single MRN" group at their second encounter could later enter as "duplicate MRN" if they eventually get a duplicate created? - But once someone has duplicate treatment, they can never be in the "single MRN" group again?
+
+**Time zero for each entry**: Each time someone becomes newly eligible?
+
+Could you clarify the exact moment when treatment (duplicate creation) occurs relative to the second encounter, and how the sequential design would work?
+
+### RESEARCHER
+
+A person is "treated" with a duplicate MRN on the date in which our records show that the duplicate was detected.
+
+### METHODOLOGIST
+
+Perfect! Now I understand. Let me confirm your treatment assignment operationalization:
+
+**Item 7b: Treatment Assignment Operationalization** - **Duplicate MRN treatment**: Assigned on the date duplicate was detected (per master patient index) - **Single MRN treatment**: All other eligible patients (no duplicate detected) - **Sequential design**: - Patients can enter multiple times as they become newly eligible - Single MRN patients can later switch to duplicate MRN group if duplicate subsequently detected - Once in duplicate MRN group, patients cannot switch back (permanent exposure effect)
+
+**Key question for TIME ZERO alignment**:
+
+In your target trial, treatment assignment happened exactly at TIME ZERO (second encounter). But now treatment occurs when duplicate is detected.
+
+Are you redefining TIME ZERO as: - **Option 1**: Still the second encounter date (regardless of when duplicate detected)? - **Option 2**: The date duplicate was detected (which becomes the new TIME ZERO for duplicate group)?
+
+This affects when follow-up begins and eligibility assessment. Which approach do you prefer for maintaining the TARGET framework structure?
+
+### RESEARCHER
+
+The date the duplicate was created is time zero for eligible patients entering the duplicate arm. For the non-duplicate arm it could be any encounter in the study period in which the patient meets eligibility criteria and did not get a duplicate. Note that we do not have regularly spaced encounters, so we will need to decide how to fill in data when there are gaps in the record, such as 6 months between encounters.
+
+### METHODOLOGIST
+
+Excellent! Now I understand your sequential trial design better. Let me confirm the treatment assignment operationalization:
+
+**Item 7b: Treatment Assignment Operationalization** - **Duplicate arm TIME ZERO**: Date duplicate was created (per master patient index) - **Single MRN arm TIME ZERO**: Any encounter date when patient meets eligibility (≥2nd encounter, no duplicate history) and no duplicate created - **Sequential design**: Patients can have multiple entries as they become eligible at different encounters - **Treatment switching**: Single→Duplicate allowed, Duplicate→Single never allowed
+
+**Key issue you raised - gaps between encounters**: This is crucial for your monthly risk difference calculations.
+
+**Questions about handling encounter gaps**: 1. **Risk period definition**: If someone has 6-month gaps, how do you define their "at risk" status during months with no encounters? 2. **Censoring approach**: - Censor at last encounter date? - Assume continuous follow-up until next encounter? - Administrative censoring at fixed intervals? 3. **Admission ascertainment**: Can hospital admissions be detected even when no outpatient encounters occur?
+
+This affects your ability to calculate monthly risk differences. How do you want to handle these follow-up gaps?
+
+### RESEARCHER
+
+For each month in which we do not have any encounter data for an enrolled patient, we will assume that there is no admission, death, or new duplicate. If the last encounter for a patient ends before the study ends, we will censor that patient the month after their last encounter. Will that create bias?
+
+### METHODOLOGIST
+
+Yes, this approach could create important biases. Let me walk through the concerns:
+
+**Potential biases:**
+
+1.  **Informative censoring**: Patients who stop coming to your health system may be systematically different (sicker, moved, switched providers, died elsewhere). If duplicate vs. single MRN patients have different dropout patterns, this creates bias.
+
+2.  **Outcome misclassification**: Assuming "no admission" during gaps means you'll miss:
+
+    -   Hospital admissions at other health systems
+    -   Deaths outside your system
+    -   This could differentially affect groups if duplicate patients have different healthcare-seeking patterns
+
+3.  **Competing risk misspecification**: Missing deaths means your competing risk analysis will be biased.
+
+**Potential solutions:** 1. **Restrict follow-up**: Only count time when patients are "actively engaged" (e.g., within X months of an encounter) 2. **Claims data linkage**: If available, to capture external admissions/deaths 3. **Sensitivity analyses**: Vary assumptions about gaps (e.g., immediate censoring vs. your current approach) 4. **Shorter follow-up**: Maybe 1 year instead of 3 years to minimize gap problems
+
+Given these constraints, would you like to modify your follow-up approach, or proceed with sensitivity analyses to assess the impact?
+
+### RESEARCHER
+
+We will need to conduct a sensitivity analysis and also adjust for informative censoring
+
+### METHODOLOGIST
+
+Excellent approach! Let me confirm your treatment assignment operationalization:
+
+**Item 7b: Treatment Assignment Operationalization** - **Duplicate arm TIME ZERO**: Date duplicate was created (per master patient index) - **Single MRN arm TIME ZERO**: Any encounter date when patient meets eligibility and no duplicate created - **Sequential design**: Multiple entries allowed, switching Single→Duplicate only - **Follow-up gaps**: Assume no events during months without encounters - **Censoring**: Month after last encounter if study period continues - **Bias mitigation**: Sensitivity analyses + adjustment for informative censoring
+
+**Confirmed!**
+
+Now let's move to **Item 7c: Assignment Operationalization**.
+
+This overlaps with 7b but focuses on the technical implementation. You've described using the master patient index to identify duplicate creation dates.
+
+**Key questions:** 1. **Timing windows**: Any grace period around duplicate creation? (e.g., if duplicate created 1 day after encounter, still count that encounter as TIME ZERO?)
+
+2.  **Data quality checks**: How will you validate the master patient index data?
+
+3.  **Edge cases**: How will you handle:
+
+    -   Duplicates created and resolved quickly?
+    -   Multiple duplicates for same patient?
+
+How will you operationally implement this assignment algorithm?
+
+### RESEARCHER
+
+No grace period is needed for the timing window. We have already validated the MPI. We might need to consider the length of time a duplicate existed. We should probably censor patients with multiple duplicates.
+
+### METHODOLOGIST
+
+Great! Let me confirm your assignment operationalization:
+
+**Item 7c: Assignment Operationalization** - **Implementation**: Use validated master patient index (MPI) - **No grace period**: Exact date matching between encounters and duplicate creation - **Multiple duplicates**: Censor patients with \>1 duplicate record - **Duration consideration**: Account for length of time duplicate existed (exposure duration)
+
+**Question about duration**: How will you incorporate duplicate duration into your analysis? - **Time-varying exposure**: Patients "treated" only while duplicate exists, then switch back to single MRN group when resolved? - **Or permanent exposure**: Once duplicate created, always in duplicate group regardless of resolution?
+
+Earlier you mentioned patients can't switch back from duplicate group due to potential lasting effects. Does this mean permanent exposure, or will you track duration as a modifier?
+
+**Confirmed on the rest?**
+
+Now let's move to **Item 7d: Follow-up Operationalization**.
+
+You've defined follow-up procedures. Key implementation questions:
+
+1.  **Monthly risk calculations**: What date within each month will you use for risk assessment?
+2.  **Administrative end date**: Study end (12/1/2019) vs. 3-year individual follow-up - which takes precedence?
+
+How will you operationally implement the follow-up procedures?
+
+### RESEARCHER
+
+Once duplicated they are always in the duplicate group.
+
+### METHODOLOGIST
+
+Perfect! That confirms the permanent exposure approach.
+
+**Item 7c: Assignment Operationalization - CONFIRMED** - Use validated MPI for duplicate detection - No grace period for timing - Censor patients with multiple duplicates\
+- **Permanent exposure**: Once duplicate created, always in duplicate group - Track duplicate duration as potential effect modifier
+
+Now for **Item 7d: Follow-up Operationalization**.
+
+**Key implementation questions:**
+
+1.  **Monthly risk assessment**: What date within each month will define the risk calculation?
+    -   End of month?
+    -   Monthly anniversaries from TIME ZERO?
+    -   Calendar months (e.g., Jan 31, Feb 28, etc.)?
+2.  **Follow-up end**: Which takes precedence?
+    -   Individual 3-year follow-up from TIME ZERO?
+    -   Administrative study end (12/1/2019)?
+    -   Patient's last encounter + 1 month (your censoring rule)?
+3.  **Risk period definition**: During months without encounters, how do you define the "at-risk" period?
+    -   Full month counted as at-risk?
+    -   Only days until expected next encounter?
+
+How will you operationally implement these monthly follow-up assessments?
+
+### RESEARCHER
+
+We wil consider all events in a given month. For followup, the time should be based on time from time zero for each patient. We will have to adjust for calendar time in the analysis.
+
+### METHODOLOGIST
+
+Excellent! Let me confirm your follow-up operationalization:
+
+**Item 7d: Follow-up Operationalization** - **Monthly assessment**: All events occurring within each calendar month counted - **Follow-up duration**: Individual time from each patient's TIME ZERO (not calendar-based) - **Maximum follow-up**: 3 years from individual TIME ZERO or study end (12/1/2019), whichever comes first - **Censoring**: Month after last encounter if no subsequent activity - **Calendar time adjustment**: Account for secular trends/calendar effects in analysis - **Gap handling**: Assume no events during months without encounters (with sensitivity analysis)
+
+**Confirmed!**
+
+Now let's move to **Item 7e: Outcomes Operationalization**.
+
+You defined hospital admission as "any inpatient admission" excluding same-day as TIME ZERO.
+
+**Key implementation questions:** 1. **Admission identification**: What specific codes/fields in your PCOR CDM identify inpatient admissions? 2. **Same-day exclusion**: How will you operationally exclude admissions on TIME ZERO date? 3. **Multiple admissions**: If patient has multiple admissions in same month, how counted? 4. **Admission timing**: Admission date vs. discharge date for monthly risk calculations?
+
+How will you identify hospital admissions in your observational data?
+
+### RESEARCHER
+
+IN months without encounters the full month is considered at-risk
+
+### METHODOLOGIST
+
+Thanks for that clarification! Let me update Item 7d:
+
+**Item 7d: Follow-up Operationalization - UPDATED** - **Monthly assessment**: All events occurring within each calendar month counted - **At-risk time**: Full month counted as at-risk, even without encounters - **Follow-up duration**: Individual time from each patient's TIME ZERO - **Maximum follow-up**: 3 years from TIME ZERO or study end (12/1/2019), whichever comes first - **Censoring**: Month after last encounter if no subsequent activity - **Calendar time adjustment**: Account for secular trends in analysis - **Gap handling**: Assume no events during encounter gaps (with sensitivity analysis)
+
+**Confirmed!**
+
+Now for **Item 7e: Outcomes Operationalization**.
+
+You defined hospital admission as "any inpatient admission" excluding same-day as TIME ZERO.
+
+**Key implementation questions:** 1. **Admission identification**: What specific encounter types/codes in your PCOR CDM identify inpatient admissions? 2. **Same-day exclusion**: How will you operationally exclude admissions on TIME ZERO date? 3. **Multiple admissions**: If patient has multiple admissions in same month, how are they counted? 4. **Date field**: Admission date vs. discharge date for monthly risk calculations?
+
+How will you operationally identify hospital admissions?
+
+### RESEARCHER
+
+We will identify the exact codes from the CDM. I don't have them right now. If time zero aligns with the date of admission we can detect that. We will only ever count the first admission after time zero because that is the endpoint. During the study period, once a person is admitted he or she is no longer eligible for a mini-trial.
+
+### METHODOLOGIST
+
+Perfect! That clarifies the endpoint nature of your outcome.
+
+**Item 7e: Outcomes Operationalization** - **Admission identification**: Specific inpatient encounter types/codes from PCOR CDM (to be determined) - **Same-day exclusion**: Exclude if admission date = TIME ZERO date - **First admission only**: Time-to-first-admission endpoint - follow-up stops at first admission - **Sequential trial impact**: Once admitted, patient exits all future mini-trials (no longer eligible) - **Monthly risk**: Admission occurrence within each month from TIME ZERO
+
+**Confirmed!**
+
+Now let's move to **Item 7f: Contrasts Operationalization**.
+
+You specified monthly risk differences using cumulative incidence with competing risks (death), plus RMST analysis, with FDR control and graphical presentation.
+
+**Implementation questions:** 1. **Monthly intervals**: Calculate risk differences at 1, 2, 3...up to 36 months from each patient's individual TIME ZERO? 2. **Competing events**: How will you identify deaths in your data? You mentioned incomplete death data - what's available? 3. **Risk calculation**: Cumulative incidence accounting for competing risks at each monthly time point? 4. **Pooling across mini-trials**: How will you combine results across all the sequential mini-trials?
+
+How will you operationally calculate these contrasts?
+
+### RESEARCHER
+
+Yes we calculate risk diffrences for months 1 to 36 from time zero. We have some death data. If a patient was then died, we can ignore that death, because the admission came first. We will use what you suggest for items 3 and 4.
+
+### METHODOLOGIST
+
+Excellent! Let me confirm your contrasts operationalization:
+
+**Item 7f: Contrasts Operationalization** - **Monthly risk differences**: Calculate at months 1, 2, 3...36 from each individual TIME ZERO - **Death handling**: Use available death data as competing event; if admission occurs before death, ignore the death (admission is the endpoint) - **Risk calculation**: Cumulative incidence functions accounting for competing risks at each monthly time point - **Sequential trial pooling**: Combine results across all mini-trials using appropriate methods for sequential designs - **Secondary analysis**: RMST differences - **Multiple comparisons**: FDR control + graphical presentation of all monthly estimates
+
+**Confirmed!**
+
+Now **Item 7g: Assumptions Operationalization**.
+
+Your target trial assumptions need to be evaluated in observational data:
+
+**Key questions:** 1. **Exchangeability**: How will you assess/ensure comparability between duplicate and single MRN groups at TIME ZERO? 2. **Positivity**: How will you check that both exposures are possible for eligible patients? 3. **No interference**: Any concerns about one patient's duplicate status affecting others? 4. **Missing data assessment**: How will you evaluate the impact of incomplete death data and encounter gaps?
+
+What approaches will you use to assess these assumptions?
+
+### RESEARCHER
+
+FOr 1 we must use something like IPTW based on pretreatment covariates (demographics and CCI). Both exposures are always possible. There is no interference concerns. We will use sensitivity analysis for missing data assessment.
+
+### METHODOLOGIST
+
+Perfect! Let me confirm your assumptions operationalization:
+
+**Item 7g: Assumptions Operationalization** - **Exchangeability**: Use IPTW (Inverse Probability of Treatment Weighting) based on pre-treatment covariates: - Demographics - Charlson Comorbidity Index (CCI) - **Positivity**: Both exposures always possible for eligible patients (confirmed) - **No interference**: No concerns about spillover effects between patients - **Missing data**: Sensitivity analyses for incomplete death data and encounter gaps
+
+**Confirmed!**
+
+Finally, **Item 7h: Analysis Operationalization**.
+
+This specifies exactly how you'll implement your analysis plan with observational data:
+
+**Key implementation details:** 1. **IPTW implementation**: How will you calculate weights? Logistic regression predicting duplicate assignment? 2. **Sequential trial analysis**: How will you handle the multiple mini-trials analytically? Pooled analysis? Meta-analysis approach? 3. **Cumulative incidence**: Specific software/methods for competing risks analysis with IPTW? 4. **FDR implementation**: Across all 36 monthly comparisons? 5. **Sensitivity analyses**: What specific sensitivity approaches for missing data?
+
+How will you operationally implement the statistical analysis?
+
+### RESEARCHER
+
+We can use the R package TrialEmulation to analyze the data since it supports both IPTW and IPCW. I'm not sure if it can give the cumulative risk difference. We can use pooled logistic regressionn as well.
+
+### METHODOLOGIST
+
+Excellent! The TrialEmulation R package is perfect for this - it's specifically designed for TARGET trial emulation with sequential trials.
+
+**Item 7h: Analysis Operationalization** - **Primary method**: TrialEmulation R package for sequential trial analysis with IPTW and IPCW - **Alternative approach**: Pooled logistic regression - **Risk differences**: If TrialEmulation doesn't directly output cumulative risk differences, can derive from survival curves or use pooled logistic regression coefficients - **IPTW**: For baseline confounding (demographics, CCI) - **IPCW**: For informative censoring due to encounter gaps - **Sequential pooling**: Package handles combining across mini-trials - **FDR control**: Across 36 monthly comparisons - **Sensitivity analyses**: Vary assumptions about missing data/gaps
+
+**Confirmed!**
+
+🎉 **Congratulations! Your TARGET protocol is complete. You can now download it.**
+
+You've successfully designed a comprehensive observational study emulating a pragmatic target trial for studying duplicate EHR records' effects on hospital admissions, with proper handling of time-varying exposures, competing risks, and sequential trial methodology!
+
+------------------------------------------------------------------------
+
+*This protocol was developed using the TARGET Trial Design Assistant, following the TARGET (Transparent Reporting of Observational Studies Emulating a Target Trial) reporting guideline.*

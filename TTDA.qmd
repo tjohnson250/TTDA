@@ -10,7 +10,7 @@ This is the main launch page to the latest version of an AI-powered Claude tool 
 
 The tool uses the TARGET guidelines [@cashin2025] to walk you through the elements needed to design an ideal pragmatic clinical trial and then how to emulate that trial using observational data.
 
-I developed this tool based on our review of tools for supporting target trial emulations, which showed that there were no tools to support the early, and most critical, stages of target trial emulation–clearly specifying the causal question and the study design [@vanhal2025]. Many tools support the identification and estimation phases, but without a well-defined causal question and study design, even the best analysis will produce poor results.
+I developed this tool as a result of our review of tools for supporting target trial emulations, which showed that there were no tools offering complete support of the early, and most critical stages of target trial emulation: clearly specifying the causal question and the study design [@vanhal2025]. Many tools support the identification and estimation phases, but without a well-defined causal question and study design, even the best analysis will produce poor results.
 
 This page will always link to the latest version of the tool. Claude changes the URL for each version, so it is best to bookmark this page.
 

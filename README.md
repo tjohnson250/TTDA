@@ -5,4 +5,4 @@ The Target Trial Design Assistant is a Claude AI-powered tool to help you design
 
 To use it you will need a Claude account.
 
-The latest version is always available at: 
+The latest version is always available at: https://tjohnson250.github.io/TTDA/TTDA.html

@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Todd R. Johnson">
+
+<title>Effect of Duplicate EHR Records on Hospital Admissions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="Untitled_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Untitled_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Untitled_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Untitled_files/libs/quarto-html/popper.min.js"></script>
+<script src="Untitled_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Untitled_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Untitled_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Untitled_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Untitled_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Untitled_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Untitled_files/libs/bootstrap/bootstrap-81267100e462c21b3d6c0d5bf76a3417.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Effect of Duplicate EHR Records on Hospital Admissions</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Todd R. Johnson </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This is a sample session where I used the <a href="https://tjohnson250.github.io/TTDA/TTDA.html">TARGET Trial Design Assistant (TTDA)</a> to develop a observational study design to estimate the causal effect of duplicate patient records on hospital admissions. This study is based on work that looked at the association among various factors and whether or not a patient had a duplicate record. <span class="citation" data-cites="sahin2024">Sahin et al. (<a href="#ref-sahin2024" role="doc-biblioref">2024</a>)</span></p>
+<p>This is just one run of many that I did while debugging and improving TTDA. It is worth working through TTDA with the same research question multiple times, because each time the tool can offer different suggestions and past sessions will often lead to changing in your thinking about how to design the best study or studies.</p>
+<p>In this case we are validating a version of this study that we designed without TTDA. Using TTDA surfaced a number of issues that we are now considering during the analysis phase.</p>
+<p>Limitations:</p>
+<ul>
+<li><p>TTDA does not currently produce a summary of the protocol</p></li>
+<li><p>You must save or download the entire chat and then build the summary from the chat</p></li>
+</ul>
+<p>I encourage you to try TTDA and send feedback either to me at todd.r.johnson@uth.tmc.edu or through the GitHub repo: <a href="https://github.com/tjohnson250/TTDA" class="uri">https://github.com/tjohnson250/TTDA</a></p>
+<section id="target-trial-protocol" class="level1">
+<h1>TARGET TRIAL PROTOCOL</h1>
+</section>
+<section id="effect-of-duplicate-records-on-hospital-admission" class="level1">
+<h1>Effect of Duplicate Records on Hospital Admission</h1>
+<p><strong>Generated:</strong> 11/7/2025, 3:34:09 PM</p>
+<hr>
+<section id="research-question" class="level2">
+<h2 class="anchored" data-anchor-id="research-question">RESEARCH QUESTION</h2>
+<p>The effect of duplicate EHR records on hospital admissions</p>
+<hr>
+</section>
+<section id="target-trial-specification-items-6a-h" class="level2">
+<h2 class="anchored" data-anchor-id="target-trial-specification-items-6a-h">TARGET TRIAL SPECIFICATION (Items 6a-h)</h2>
+<p>This section defines the pragmatic randomized clinical trial that could actually be conducted.</p>
+<section id="summary-of-protocol-elements" class="level3">
+<h3 class="anchored" data-anchor-id="summary-of-protocol-elements">Summary of Protocol Elements</h3>
+<p><strong>Item 6a: Eligibility Criteria</strong> Defines the target population and inclusion/exclusion criteria.</p>
+<p><strong>Item 6b: Treatment Strategies</strong><br>
+Specifies the interventions compared, including dosage, timing, duration, and decision rules.</p>
+<p><strong>Item 6c: Random Assignment</strong> Eligible individuals would be randomly assigned to treatment strategies and aware of their allocation.</p>
+<p><strong>Item 6d: Follow-up Period</strong> Follow-up starts at time zero (assignment) and specifies when it ends.</p>
+<p><strong>Item 6e: Outcomes</strong> Describes how and when outcomes are measured.</p>
+<p><strong>Item 6f: Causal Contrasts</strong> Specifies intention-to-treat and/or per-protocol effects, effect measures, and handling of competing events.</p>
+<p><strong>Item 6g: Assumptions</strong> Identifies assumptions needed to identify each causal estimand.</p>
+<p><strong>Item 6h: Analysis Plan</strong> Describes data analysis procedures, including handling of missing data and sensitivity analyses.</p>
+<hr>
+</section>
+</section>
+<section id="target-trial-emulation-items-7a-h" class="level2">
+<h2 class="anchored" data-anchor-id="target-trial-emulation-items-7a-h">TARGET TRIAL EMULATION (Items 7a-h)</h2>
+<p>This section describes how the target trial specification is mapped to observational data.</p>
+<section id="summary-of-emulation-elements" class="level3">
+<h3 class="anchored" data-anchor-id="summary-of-emulation-elements">Summary of Emulation Elements</h3>
+<p><strong>Item 7a: Operationalizing Eligibility</strong> How eligibility criteria are identified in the data (codes, algorithms, etc.).</p>
+<p><strong>Item 7b: Operationalizing Treatment Strategies</strong> How treatment strategies are ascertained from the data.</p>
+<p><strong>Item 7c: Operationalizing Assignment</strong> How individuals are classified into treatment strategies at time zero.</p>
+<p><strong>Item 7d: Operationalizing Follow-up</strong> How time zero and end of follow-up are determined in the data.</p>
+<p><strong>Item 7e: Operationalizing Outcomes</strong> How outcomes are ascertained from the data.</p>
+<p><strong>Item 7f: Operationalizing Causal Contrasts</strong> How intention-to-treat and per-protocol effects are estimated.</p>
+<p><strong>Item 7g: Operationalizing Assumptions</strong> Baseline confounders and variables for handling missing data and competing events.</p>
+<p><strong>Item 7h: Operationalizing Analysis</strong> Actual analysis methods, software, models, and sensitivity analyses.</p>
+<hr>
+</section>
+</section>
+<section id="complete-conversation-log" class="level2">
+<h2 class="anchored" data-anchor-id="complete-conversation-log">COMPLETE CONVERSATION LOG</h2>
+<p>The following is the complete conversation between researcher and methodologist that developed this protocol.</p>
+<section id="methodologist" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist">METHODOLOGIST</h3>
+<p>Welcome! I’m your TARGET Trial Design Assistant. I’ll help you develop a well-specified observational study design following the TARGET (Transparent Reporting of Observational Studies Emulating a Target Trial) framework.</p>
+<p>We’ll work through two phases:</p>
+<ol type="1">
+<li><p><strong>Target Trial Specification</strong> - Define a PRAGMATIC CLINICAL TRIAL that could actually be conducted. This is not a theoretical ideal trial, but a realistic randomized trial you could run with real patients and feasible procedures.</p></li>
+<li><p><strong>Target Trial Emulation</strong> - Map that pragmatic trial design to your observational data.</p></li>
+</ol>
+<p><strong>Critical concept:</strong> Throughout this process, we’ll pay special attention to TIME ZERO - the single point in time when: - Eligibility criteria are met - Treatment is assigned<br>
+- Follow-up begins</p>
+<p>Getting time zero right prevents immortal time bias and other design flaws that plague observational studies.</p>
+<p>Let’s start! What research question would you like to address? Please describe: - The intervention or exposure you’re interested in - The outcome(s) you want to study - The population you’re studying</p>
+</section>
+<section id="researcher" class="level3">
+<h3 class="anchored" data-anchor-id="researcher">RESEARCHER</h3>
+<p>The effect of duplicate EHR records on hospital admissions</p>
+</section>
+<section id="methodologist-1" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-1">METHODOLOGIST</h3>
+<p>Thanks for sharing your research interest! I can see you’re looking at duplicate EHR records and their effect on hospital admissions. To help you develop a strong TARGET design, I need to understand your research question more precisely.</p>
+<p>Could you clarify a few things:</p>
+<ol type="1">
+<li><strong>What exactly do you mean by “duplicate EHR records”?</strong> Are these:
+<ul>
+<li>Patients with multiple medical record numbers in the same health system?</li>
+<li>Duplicate entries for the same patient encounter?</li>
+<li>Something else?</li>
+</ul></li>
+<li><strong>What’s your hypothesis about the direction of effect?</strong> Do you think duplicate records:
+<ul>
+<li>Increase hospital admissions (perhaps due to fragmented care, missed information)?</li>
+<li>Decrease admissions (maybe due to access barriers)?</li>
+<li>Have some other effect?</li>
+</ul></li>
+<li><strong>What population are you studying?</strong> For example:
+<ul>
+<li>All patients in a health system?</li>
+<li>Patients with specific conditions?</li>
+<li>New patients vs.&nbsp;established patients?</li>
+</ul></li>
+<li><strong>What type of hospital admissions are you interested in?</strong>
+<ul>
+<li>Any admission?</li>
+<li>Emergency admissions specifically?</li>
+<li>Admissions for certain conditions?</li>
+</ul></li>
+</ol>
+<p>Understanding these details will help us design a pragmatic target trial that addresses your specific research question effectively.</p>
+</section>
+<section id="researcher-1" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-1">RESEARCHER</h3>
+<p>Duplicate records are patients with multiple MRNs in the same health system. We found a positive association between duplicates and hospital admissions in an earlier (non-causal) study. We are studying all patients. We consider any hospital admission as an admission.</p>
+</section>
+<section id="methodologist-2" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-2">METHODOLOGIST</h3>
+<p>Excellent, that clarifies your research question! You’re studying whether having duplicate MRNs (multiple medical record numbers for the same patient) causally increases hospital admissions compared to having a single MRN.</p>
+<p>Now let’s design your TARGET trial specification. We’ll start with <strong>Item 6a: Eligibility Criteria</strong>.</p>
+<p>For your pragmatic target trial, we need to define:</p>
+<p><strong>WHO would be eligible to participate?</strong> Think about this as a real randomized trial you could actually conduct. Consider:</p>
+<ul>
+<li><strong>Patient characteristics</strong>: Age ranges? Any exclusions based on medical conditions?</li>
+<li><strong>Health system relationship</strong>: New patients only? Established patients? Both?</li>
+<li><strong>Timing requirements</strong>: When exactly does someone become eligible? (This is crucial for TIME ZERO)</li>
+</ul>
+<p>For example, you might specify eligibility as: - “Adult patients (≥18 years) presenting for their first encounter at [Health System X]” - “Patients aged 18-89 with at least one prior encounter, presenting for a new episode of care”</p>
+<p><strong>Remember</strong>: TIME ZERO is the exact moment when eligibility criteria are MET (not assessed). This is when someone actually becomes eligible, treatment would be assigned, and follow-up would begin - all at the same instant.</p>
+<p>What eligibility criteria make sense for your pragmatic trial studying duplicate vs.&nbsp;single MRNs?</p>
+</section>
+<section id="researcher-2" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-2">RESEARCHER</h3>
+<p>Eligible patients are those with at least one prior encounter and no history of ever having a duplicate record.</p>
+</section>
+<section id="methodologist-3" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-3">METHODOLOGIST</h3>
+<p>Good start! This helps define the baseline population. Now let’s refine this to create clear eligibility criteria for your pragmatic target trial.</p>
+<p>I have a few questions to make this more precise:</p>
+<ol type="1">
+<li><p><strong>TIME ZERO definition</strong>: When exactly does someone become eligible? Is it:</p>
+<ul>
+<li>At the moment they present for their second encounter (having had one prior encounter and no duplicate history)?</li>
+<li>At some other specific time point?</li>
+</ul></li>
+<li><p><strong>Age restrictions</strong>: Any minimum/maximum age limits for this pragmatic trial?</p></li>
+<li><p><strong>“No history of duplicate record”</strong>: How far back does this history need to go?</p>
+<ul>
+<li>Since first encounter at the health system?</li>
+<li>Within a specific time window?</li>
+<li>All available historical data?</li>
+</ul></li>
+<li><p><strong>Encounter types</strong>: Does “prior encounter” include any type of visit (outpatient, ED, inpatient) or specific types?</p></li>
+</ol>
+<p><strong>Remember</strong>: We need eligibility criteria that can be determined at a precise moment in time - this becomes our TIME ZERO when treatment assignment would occur and follow-up would begin.</p>
+<p>Could you help clarify these details so we can nail down exactly when someone becomes eligible for randomization in your target trial?</p>
+</section>
+<section id="researcher-3" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-3">RESEARCHER</h3>
+<p>They would be eligible the moment they present for their second encounter. No age restrictions. For history of duplicates we will go back to the first encounter in the system. Prior encounter should be any type of visit.</p>
+</section>
+<section id="methodologist-4" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-4">METHODOLOGIST</h3>
+<p>Perfect! Let me confirm your eligibility criteria:</p>
+<p><strong>Item 6a: Eligibility Criteria</strong> - Patients presenting for their second encounter at the health system (any type of visit) - No age restrictions - No history of duplicate records since their first encounter in the system</p>
+<p><strong>TIME ZERO</strong>: The moment a patient presents for their second encounter (having met the above criteria).</p>
+<p>This is good - TIME ZERO is clearly defined as a specific moment when eligibility criteria are met, and this is when treatment assignment and follow-up would begin.</p>
+<p><strong>Confirmed?</strong> If this looks right, we’ll move to the next item.</p>
+<p>Now let’s define <strong>Item 6b: Treatment Strategies</strong>.</p>
+<p>In your pragmatic randomized trial, patients eligible at TIME ZERO would be randomly assigned to one of two treatment strategies:</p>
+<ol type="1">
+<li><strong>Strategy 1</strong>: Patient gets assigned a single MRN (no duplicate created)</li>
+<li><strong>Strategy 2</strong>: Patient gets assigned a duplicate MRN (new MRN created, so they have multiple MRNs)</li>
+</ol>
+<p><strong>Key questions</strong>: - Does this capture what you want to compare? - In the “duplicate MRN” group, would they keep their original MRN AND get a new one? - How would duplicate MRN assignment actually work in practice in your pragmatic trial?</p>
+<p>What are your thoughts on these treatment strategies?</p>
+</section>
+<section id="researcher-4" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-4">RESEARCHER</h3>
+<p>Patients keep their original MRN and the data in it, but a new MRN (new EHR record for the same person) is also created. That new record would contain duplicate demographics and any additional data collected in that encounter, but no prior data.</p>
+</section>
+<section id="methodologist-5" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-5">METHODOLOGIST</h3>
+<p>Excellent! Let me confirm your treatment strategies:</p>
+<p><strong>Item 6b: Treatment Strategies</strong> - <strong>Strategy 1 (Control)</strong>: Patient continues with single existing MRN - all encounter data added to original record - <strong>Strategy 2 (Intervention)</strong>: Patient gets duplicate MRN created at TIME ZERO - keeps original MRN with all historical data, but new MRN is created containing duplicate demographics plus any new encounter data (no historical data transferred)</p>
+<p>This clearly defines what would happen at the moment of randomization (TIME ZERO).</p>
+<p><strong>Confirmed?</strong></p>
+<p>Now let’s move to <strong>Item 6c: Randomization</strong>.</p>
+<p>For your pragmatic trial, we need to specify:</p>
+<ol type="1">
+<li><strong>Randomization ratio</strong>: 1:1 (equal allocation) or something else?</li>
+<li><strong>Stratification</strong>: Would you stratify randomization by any factors? For example:
+<ul>
+<li>Type of encounter (outpatient vs.&nbsp;ED vs.&nbsp;inpatient)</li>
+<li>Department/clinic</li>
+<li>Time period</li>
+<li>Patient characteristics</li>
+</ul></li>
+<li><strong>Allocation concealment</strong>: How would randomization be implemented in practice?</li>
+</ol>
+<p>In a real-world pragmatic trial, this might be done through the EHR system automatically at the moment of check-in.</p>
+<p>What randomization approach makes most sense for your trial?</p>
+</section>
+<section id="researcher-5" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-5">RESEARCHER</h3>
+<p>Duplicates are rare in the real world, so can we design this so that only 5% of patients are randomized to the duplicate arm?</p>
+</section>
+<section id="methodologist-6" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-6">METHODOLOGIST</h3>
+<p>Absolutely! That makes perfect sense given the real-world prevalence you want to match.</p>
+<p><strong>Item 6c: Randomization</strong> - <strong>Randomization ratio</strong>: 95:5 (95% to single MRN, 5% to duplicate MRN) - This reflects the rarity of duplicates in real-world practice</p>
+<p>A few follow-up questions to complete the randomization specification:</p>
+<ol type="1">
+<li><strong>Stratification</strong>: Would you stratify the randomization by any factors? For example:
+<ul>
+<li>Type of second encounter (outpatient, ED, inpatient)?</li>
+<li>Department or clinic?</li>
+<li>Time of day/week?</li>
+<li>Or simple randomization without stratification?</li>
+</ul></li>
+<li><strong>Implementation</strong>: In your pragmatic trial, how would this 95:5 randomization be implemented? For instance:
+<ul>
+<li>Automated through EHR system at check-in?</li>
+<li>Research staff using randomization system?</li>
+<li>Some other method?</li>
+</ul></li>
+</ol>
+<p>The key is that it happens exactly at TIME ZERO when the patient presents for their second encounter.</p>
+<p>What approach would work best for your pragmatic trial design?</p>
+</section>
+<section id="researcher-6" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-6">RESEARCHER</h3>
+<p>No stratification. Randomization would be automated through the EHR check in system.</p>
+</section>
+<section id="methodologist-7" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-7">METHODOLOGIST</h3>
+<p>Perfect! Let me confirm your randomization:</p>
+<p><strong>Item 6c: Randomization</strong> - 95:5 allocation ratio (95% single MRN, 5% duplicate MRN) - No stratification - Automated through EHR check-in system at TIME ZERO (moment of second encounter presentation)</p>
+<p><strong>Confirmed!</strong></p>
+<p>Now let’s define <strong>Item 6d: Follow-up</strong>.</p>
+<p>This is crucial because follow-up must begin exactly at TIME ZERO - the same moment when eligibility criteria are met and treatment is assigned.</p>
+<p>Key questions for your pragmatic trial:</p>
+<ol type="1">
+<li><p><strong>Follow-up start</strong>: Begins at TIME ZERO (moment of second encounter presentation) - correct?</p></li>
+<li><p><strong>Follow-up duration</strong>: How long would you follow patients? For example:</p>
+<ul>
+<li>30 days? 90 days? 1 year?</li>
+<li>Until a specific event occurs?</li>
+</ul></li>
+<li><p><strong>Follow-up procedures</strong>: What data would be collected during follow-up?</p>
+<ul>
+<li>Hospital admissions through EHR/administrative data?</li>
+<li>Active patient contact?</li>
+<li>Claims data linkage?</li>
+</ul></li>
+<li><p><strong>End of follow-up</strong>: What would end follow-up early?</p>
+<ul>
+<li>Death, disenrollment from health system, end of study period?</li>
+</ul></li>
+</ol>
+<p>What follow-up period and procedures make sense for studying the effect on hospital admissions?</p>
+</section>
+<section id="researcher-7" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-7">RESEARCHER</h3>
+<p>Follow-up starts at the moment of the second encounter. We will follow patients for 3 years or until an admission occurs. This data is in our integrated PCOR CDM clinical data warehouse. We do not have complete death data, but if we do get a record of death, we will need to consider how to handle competing events.</p>
+</section>
+<section id="methodologist-8" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-8">METHODOLOGIST</h3>
+<p>Excellent! Let me confirm your follow-up:</p>
+<p><strong>Item 6d: Follow-up</strong> - Starts at TIME ZERO (moment of second encounter presentation) - Duration: 3 years or until hospital admission occurs (whichever comes first) - Data source: Integrated PCOR CDM clinical data warehouse - Incomplete death data available (competing events consideration noted)</p>
+<p><strong>Confirmed!</strong></p>
+<p>Now let’s define <strong>Item 6e: Primary Outcome</strong>.</p>
+<p>For your pragmatic trial studying hospital admissions:</p>
+<ol type="1">
+<li><strong>Outcome definition</strong>: What exactly counts as a “hospital admission”?
+<ul>
+<li>Any inpatient admission?</li>
+<li>Only unscheduled/emergency admissions?</li>
+<li>Exclude same-day procedures?</li>
+<li>Include observation stays?</li>
+</ul></li>
+<li><strong>Outcome measurement</strong>: How would this be captured in your PCOR CDM?
+<ul>
+<li>Specific encounter types or admission codes?</li>
+<li>Any exclusions (e.g., planned procedures)?</li>
+</ul></li>
+<li><strong>Time-to-event vs.&nbsp;binary</strong>: Since you’re following until admission occurs, this sounds like:
+<ul>
+<li>Time to first hospital admission (survival analysis)</li>
+<li>Is that correct?</li>
+</ul></li>
+<li><strong>Competing events</strong>: You mentioned death - would you treat this as:
+<ul>
+<li>Censoring event?</li>
+<li>Competing risk?</li>
+<li>Combined endpoint?</li>
+</ul></li>
+</ol>
+<p>What’s your preferred primary outcome specification?</p>
+</section>
+<section id="researcher-8" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-8">RESEARCHER</h3>
+<p>Hospital admission is any inpatient admission. We should exclude admissions on the same day as time zero. We have admission codes in our CDM. We would like to measure time to event and also look at the risk difference. Death will be treated as a competing event.</p>
+</section>
+<section id="methodologist-9" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-9">METHODOLOGIST</h3>
+<p>Perfect! Let me confirm your primary outcome:</p>
+<p><strong>Item 6e: Primary Outcome</strong> - Any inpatient admission (identified by admission codes in PCOR CDM) - Excludes admissions on same day as TIME ZERO - Time-to-event analysis (time to first hospital admission) - Also examine risk difference - Death treated as competing event</p>
+<p><strong>Confirmed!</strong></p>
+<p>Now let’s define <strong>Item 6f: Estimand/Contrasts</strong>.</p>
+<p>This specifies exactly what you want to estimate from your pragmatic trial. Based on your outcome definition:</p>
+<ol type="1">
+<li><strong>Primary contrast</strong>: What comparison are you most interested in?
+<ul>
+<li>Hazard ratio (duplicate MRN vs.&nbsp;single MRN for time to admission)?</li>
+<li>Risk difference at specific time points (e.g., 30 days, 1 year, 3 years)?</li>
+<li>Both?</li>
+</ul></li>
+<li><strong>Time horizons</strong>: For risk differences, at what time points?
+<ul>
+<li>30 days, 90 days, 1 year, 3 years?</li>
+</ul></li>
+<li><strong>Competing events handling</strong>: For the estimand with death as competing event:
+<ul>
+<li>Cause-specific hazard ratio (treating death as censoring)?</li>
+<li>Cumulative incidence with competing risks?</li>
+<li>Both approaches?</li>
+</ul></li>
+</ol>
+<p>What would be your primary estimand of interest?</p>
+</section>
+<section id="researcher-9" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-9">RESEARCHER</h3>
+<p>Hernan has warned against using hazard ratios and also against methods that assume proportional hazards. Is there an alternative?</p>
+</section>
+<section id="methodologist-10" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-10">METHODOLOGIST</h3>
+<p>Absolutely! You’re wise to heed Hernán’s guidance. He advocates for more interpretable measures that don’t rely on proportional hazards assumptions.</p>
+<p>Better alternatives for your estimand:</p>
+<ol type="1">
+<li><strong>Risk difference at specific time points</strong> (most interpretable):
+<ul>
+<li>E.g., “At 1 year, the difference in probability of hospital admission between duplicate MRN vs.&nbsp;single MRN groups”</li>
+<li>Can calculate at multiple time points: 30 days, 6 months, 1 year, 3 years</li>
+</ul></li>
+<li><strong>Risk ratio at specific time points</strong>:
+<ul>
+<li>“At 1 year, the ratio of admission probabilities between groups”</li>
+</ul></li>
+<li><strong>Restricted mean survival time difference</strong>:
+<ul>
+<li>Difference in average time to admission up to a specific time point (e.g., 3 years)</li>
+</ul></li>
+</ol>
+<p>With competing events (death), you’d use <strong>cumulative incidence functions</strong> rather than Kaplan-Meier, which properly accounts for competing risks without proportional hazards assumptions.</p>
+<p><strong>Hernán’s preference</strong> is typically risk differences at clinically meaningful time points - they’re most interpretable and policy-relevant.</p>
+<p>Which approach appeals to you? Risk differences at specific time points (e.g., 30 days, 1 year) using cumulative incidence with competing risks?</p>
+</section>
+<section id="researcher-10" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-10">RESEARCHER</h3>
+<p>Let’s use the risk difference at specific time points. Can we do that for each month? We can do several analyses and see if they generally give the same result. For example, we can also use RSMD.</p>
+</section>
+<section id="methodologist-11" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-11">METHODOLOGIST</h3>
+<p>Excellent choice! That’s exactly the approach Hernán would recommend.</p>
+<p><strong>Item 6f: Estimands/Contrasts</strong> - <strong>Primary</strong>: Risk difference at specific time points (monthly intervals: 1 month, 2 months, 3 months, etc. up to 36 months) - Risk difference = P(admission by time t | duplicate MRN) - P(admission by time t | single MRN) - Calculated using cumulative incidence functions accounting for death as competing event - <strong>Secondary</strong>: Restricted mean survival time difference (RMST) as sensitivity analysis - Multiple time points allow assessment of consistency across follow-up period</p>
+<p><strong>Confirmed!</strong></p>
+<p>Now let’s move to <strong>Item 6g: Key Assumptions</strong>.</p>
+<p>For your pragmatic target trial, what key assumptions would you need to make? Consider:</p>
+<ol type="1">
+<li><p><strong>Exchangeability</strong>: Random assignment ensures groups are comparable at baseline</p></li>
+<li><p><strong>Positivity</strong>: Both treatment strategies are feasible for eligible patients</p></li>
+<li><p><strong>No interference</strong>: One patient’s treatment assignment doesn’t affect another’s outcomes</p></li>
+<li><p><strong>Measurement assumptions</strong>:</p>
+<ul>
+<li>Hospital admissions captured completely in your data warehouse</li>
+<li>Duplicate MRN creation works as intended</li>
+</ul></li>
+</ol>
+<p>Are there any other key assumptions or potential violations you’re concerned about for this pragmatic trial design?</p>
+</section>
+<section id="researcher-11" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-11">RESEARCHER</h3>
+<p>This is good.</p>
+</section>
+<section id="methodologist-12" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-12">METHODOLOGIST</h3>
+<p>Great! Let me confirm your key assumptions:</p>
+<p><strong>Item 6g: Key Assumptions</strong> - Exchangeability (random assignment ensures comparable groups) - Positivity (both treatment strategies feasible for eligible patients) - No interference (one patient’s assignment doesn’t affect others) - Complete capture of hospital admissions in data warehouse - Duplicate MRN creation functions as intended</p>
+<p><strong>Confirmed!</strong></p>
+<p>Now for the final specification item - <strong>Item 6h: Analysis Plan</strong>.</p>
+<p>For your pragmatic trial, specify the statistical approach:</p>
+<ol type="1">
+<li><p><strong>Primary analysis method</strong>: How would you estimate the risk differences?</p>
+<ul>
+<li>Cumulative incidence functions with competing risks (Fine-Gray, Aalen-Johansen)?</li>
+<li>Confidence intervals and significance testing approach?</li>
+</ul></li>
+<li><p><strong>Secondary analyses</strong>:</p>
+<ul>
+<li>RMST analysis method?</li>
+<li>Any subgroup analyses?</li>
+</ul></li>
+<li><p><strong>Missing data handling</strong>: How would you handle:</p>
+<ul>
+<li>Lost to follow-up?</li>
+<li>Missing baseline covariates?</li>
+</ul></li>
+<li><p><strong>Multiple comparisons</strong>: With monthly risk differences (36 time points), any adjustment planned?</p></li>
+<li><p><strong>Sensitivity analyses</strong>: Beyond RMST, any other robustness checks?</p></li>
+</ol>
+<p>What analysis approach would you use in your pragmatic trial?</p>
+</section>
+<section id="researcher-12" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-12">RESEARCHER</h3>
+<p>For 1 and 2 we can use both methods. For the secondary analysis we will not do subgroup analysis. We will need to adjust for loss to follow-up and also cases where those in the non-duplicate arm happen to get a duplicate. How can we adjust for multiple comparisons?</p>
+</section>
+<section id="methodologist-13" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-13">METHODOLOGIST</h3>
+<p>Excellent points! Let me address your multiple comparisons question and confirm the analysis plan.</p>
+<p><strong>Multiple comparisons options:</strong></p>
+<ol type="1">
+<li><p><strong>Bonferroni correction</strong>: Divide α by number of tests (very conservative for 36 monthly comparisons)</p></li>
+<li><p><strong>False Discovery Rate (FDR)</strong>: Controls expected proportion of false discoveries (less conservative, often preferred)</p></li>
+<li><p><strong>Focus on key time points</strong>: Pre-specify a few clinically important times (e.g., 30 days, 6 months, 1 year, 3 years) for formal testing</p></li>
+<li><p><strong>Graphical presentation</strong>: Plot all monthly estimates with confidence intervals - patterns often speak for themselves without formal testing at each point</p></li>
+</ol>
+<p><strong>Hernán’s typical approach</strong>: Focus on a few pre-specified time points for formal inference, but show all monthly estimates graphically to assess consistency.</p>
+<p><strong>Item 6h: Analysis Plan</strong> - Primary: Cumulative incidence functions with competing risks (Aalen-Johansen and Fine-Gray methods) - Secondary: RMST analysis (no subgroups) - Handle loss to follow-up and treatment switches (non-duplicate→duplicate) - Multiple comparisons: [Your choice from above options] - Sensitivity analyses beyond RMST</p>
+<p>Which multiple comparisons approach appeals to you?</p>
+</section>
+<section id="researcher-13" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-13">RESEARCHER</h3>
+<p>Lets use FDR and also graphical presentation.</p>
+</section>
+<section id="methodologist-14" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-14">METHODOLOGIST</h3>
+<p>Perfect! Let me confirm your complete analysis plan:</p>
+<p><strong>Item 6h: Analysis Plan</strong> - <strong>Primary</strong>: Cumulative incidence functions with competing risks (both Aalen-Johansen and Fine-Gray methods) - <strong>Secondary</strong>: RMST analysis (no subgroup analyses) - <strong>Missing data</strong>: Adjust for loss to follow-up and treatment switches (non-duplicate→duplicate) - <strong>Multiple comparisons</strong>: False Discovery Rate (FDR) control + graphical presentation of all monthly risk differences with confidence intervals - <strong>Sensitivity analyses</strong>: RMST and other robustness checks</p>
+<p><strong>Confirmed!</strong></p>
+<p>🎉 <strong>Your target trial specification is complete!</strong></p>
+<p>You’ve designed a well-specified pragmatic randomized trial with: - Clear TIME ZERO definition (second encounter presentation) - Realistic treatment strategies (95:5 randomization to single vs.&nbsp;duplicate MRN) - Appropriate follow-up and outcomes - Sound statistical analysis plan following Hernán’s recommendations</p>
+<p><strong>Now let’s move to emulation.</strong> We’ll specify how to use your observational data to emulate this target trial design.</p>
+<p>Ready to start the emulation phase?</p>
+</section>
+<section id="researcher-14" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-14">RESEARCHER</h3>
+<p>yes</p>
+</section>
+<section id="methodologist-15" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-15">METHODOLOGIST</h3>
+<p>Excellent! Now we’ll map your target trial specification to your observational data. This is where we operationalize each component using what’s actually available in your PCOR CDM.</p>
+<p>Let’s start with <strong>Item 7a: Eligibility Operationalization</strong>.</p>
+<p>You specified that eligible patients are those presenting for their second encounter with no history of duplicates. Now we need to define how to identify these patients in your observational data:</p>
+<p><strong>Key questions:</strong></p>
+<ol type="1">
+<li><strong>Encounter identification</strong>: In your PCOR CDM, how will you identify:
+<ul>
+<li>What constitutes an “encounter” (specific encounter types, visit codes)?</li>
+<li>How to determine encounter chronology (first vs.&nbsp;second encounter)?</li>
+</ul></li>
+<li><strong>Duplicate history detection</strong>: How will you operationally identify patients with “no history of duplicate records”?
+<ul>
+<li>Do you have flags or algorithms in your CDM for duplicate detection?</li>
+<li>How will you link records that belong to the same patient?</li>
+</ul></li>
+<li><strong>TIME ZERO identification</strong>: How will you pinpoint the exact moment of the second encounter in your data?
+<ul>
+<li>Encounter start timestamp?</li>
+<li>Registration/check-in time?</li>
+</ul></li>
+<li><strong>Data completeness</strong>: Any time period restrictions for reliable encounter/duplicate detection?</li>
+</ol>
+<p>How will you operationally identify your eligible population in the observational data?</p>
+</section>
+<section id="researcher-15" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-15">RESEARCHER</h3>
+<p>We have an encounters table. Any encounter in that table would count.</p>
+</section>
+<section id="methodologist-16" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-16">METHODOLOGIST</h3>
+<p>Good start! Let me get more specifics about operationalizing eligibility in your encounters table:</p>
+<ol type="1">
+<li><strong>Chronological ordering</strong>: How will you determine first vs.&nbsp;second encounter?
+<ul>
+<li>By encounter start date/time?</li>
+<li>Any specific date field you’ll use for ordering?</li>
+</ul></li>
+<li><strong>TIME ZERO precision</strong>: What timestamp will define the exact moment of the second encounter?
+<ul>
+<li>Encounter start datetime?</li>
+<li>Admission datetime?</li>
+<li>Registration datetime?</li>
+</ul></li>
+<li><strong>Duplicate history detection</strong>: This is crucial - how will you identify patients with “no history of duplicate records” using your observational data?
+<ul>
+<li>Do you have patient linking tables that show which encounters belong to the same person?</li>
+<li>How will you detect if someone had duplicates before their second encounter?</li>
+<li>Is there a master patient index or linkage algorithm?</li>
+</ul></li>
+<li><strong>Time window</strong>: Any restrictions on the date range for reliable data?
+<ul>
+<li>When does your encounters table have complete coverage?</li>
+<li>How far back can you reliably detect duplicate history?</li>
+</ul></li>
+</ol>
+<p>The duplicate detection piece is especially important since this determines who’s eligible at baseline.</p>
+</section>
+<section id="researcher-16" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-16">RESEARCHER</h3>
+<p>To identify duplicate records, we have a master patient index that can tell us when duplicates were created and when they were eliminated (the two records were merged back into 1). We have encounter dates for temporal ordering. For the study period, we will consider 1/1/2010 to 12/1/2019</p>
+</section>
+<section id="methodologist-17" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-17">METHODOLOGIST</h3>
+<p>Excellent! That master patient index is crucial. Let me confirm your eligibility operationalization:</p>
+<p><strong>Item 7a: Eligibility Operationalization</strong> - <strong>Encounters</strong>: Any record in encounters table - <strong>Chronological ordering</strong>: By encounter date - <strong>TIME ZERO</strong>: Encounter date of second encounter - <strong>Duplicate history</strong>: Master patient index to identify patients with no duplicate creation before their second encounter - <strong>Study period</strong>: 1/1/2010 - 12/1/2019 - <strong>Algorithm</strong>: Identify patients whose second encounter falls within study period AND master patient index shows no prior duplicate record creation</p>
+<p><strong>Confirmed?</strong></p>
+<p>Now let’s move to <strong>Item 7b: Treatment Assignment Operationalization</strong>.</p>
+<p>In your target trial, patients were randomized 95:5 to single vs.&nbsp;duplicate MRN. But in observational data, you need to classify patients based on what actually happened.</p>
+<p><strong>Key questions:</strong> 1. <strong>Treatment classification</strong>: How will you determine if someone was “treated” with duplicate vs.&nbsp;single MRN? - Using master patient index to see if duplicate was created at/after TIME ZERO? - Any specific time window around TIME ZERO for duplicate creation?</p>
+<ol start="2" type="1">
+<li><strong>Timing precision</strong>: If duplicate creation happens close to but not exactly at second encounter, how will you handle this?</li>
+</ol>
+<p>How will you operationally assign patients to duplicate vs.&nbsp;single MRN groups using your observational data?</p>
+</section>
+<section id="researcher-17" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-17">RESEARCHER</h3>
+<p>We can use a patient’s earliest encounter in the study period as their entry into the cohort as long as they meet the eligibility criteria. Also, we probably want to do a nested sequential trial, so patients in the control arm could later participate as patients in the duplicate arm. However, patients in the duplicate arm cannot switch treatments, because even if their duplicate is eliminated, the fact that they had a duplicate many have effects on later admissions.</p>
+</section>
+<section id="methodologist-18" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-18">METHODOLOGIST</h3>
+<p>This is a great insight! You’re moving toward a more sophisticated design. Let me clarify what you’re proposing:</p>
+<p><strong>Sequential trial design</strong>: Patients can enter the study multiple times as they become eligible, but with restrictions based on treatment history.</p>
+<p><strong>Key clarification needed</strong>: When exactly does someone get “treated” with a duplicate MRN?</p>
+<p>You mentioned “earliest encounter in the study period” but your eligibility requires “second encounter.” Are you saying:</p>
+<ol type="1">
+<li><strong>Entry criterion</strong>: Patient’s second encounter during the study period (1/1/2010 - 12/1/2019)?</li>
+<li><strong>Treatment assignment</strong>: Based on whether a duplicate MRN was created at/around that second encounter?</li>
+</ol>
+<p><strong>Sequential trial logistics</strong>: - Someone in “single MRN” group at their second encounter could later enter as “duplicate MRN” if they eventually get a duplicate created? - But once someone has duplicate treatment, they can never be in the “single MRN” group again?</p>
+<p><strong>Time zero for each entry</strong>: Each time someone becomes newly eligible?</p>
+<p>Could you clarify the exact moment when treatment (duplicate creation) occurs relative to the second encounter, and how the sequential design would work?</p>
+</section>
+<section id="researcher-18" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-18">RESEARCHER</h3>
+<p>A person is “treated” with a duplicate MRN on the date in which our records show that the duplicate was detected.</p>
+</section>
+<section id="methodologist-19" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-19">METHODOLOGIST</h3>
+<p>Perfect! Now I understand. Let me confirm your treatment assignment operationalization:</p>
+<p><strong>Item 7b: Treatment Assignment Operationalization</strong> - <strong>Duplicate MRN treatment</strong>: Assigned on the date duplicate was detected (per master patient index) - <strong>Single MRN treatment</strong>: All other eligible patients (no duplicate detected) - <strong>Sequential design</strong>: - Patients can enter multiple times as they become newly eligible - Single MRN patients can later switch to duplicate MRN group if duplicate subsequently detected - Once in duplicate MRN group, patients cannot switch back (permanent exposure effect)</p>
+<p><strong>Key question for TIME ZERO alignment</strong>:</p>
+<p>In your target trial, treatment assignment happened exactly at TIME ZERO (second encounter). But now treatment occurs when duplicate is detected.</p>
+<p>Are you redefining TIME ZERO as: - <strong>Option 1</strong>: Still the second encounter date (regardless of when duplicate detected)? - <strong>Option 2</strong>: The date duplicate was detected (which becomes the new TIME ZERO for duplicate group)?</p>
+<p>This affects when follow-up begins and eligibility assessment. Which approach do you prefer for maintaining the TARGET framework structure?</p>
+</section>
+<section id="researcher-19" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-19">RESEARCHER</h3>
+<p>The date the duplicate was created is time zero for eligible patients entering the duplicate arm. For the non-duplicate arm it could be any encounter in the study period in which the patient meets eligibility criteria and did not get a duplicate. Note that we do not have regularly spaced encounters, so we will need to decide how to fill in data when there are gaps in the record, such as 6 months between encounters.</p>
+</section>
+<section id="methodologist-20" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-20">METHODOLOGIST</h3>
+<p>Excellent! Now I understand your sequential trial design better. Let me confirm the treatment assignment operationalization:</p>
+<p><strong>Item 7b: Treatment Assignment Operationalization</strong> - <strong>Duplicate arm TIME ZERO</strong>: Date duplicate was created (per master patient index) - <strong>Single MRN arm TIME ZERO</strong>: Any encounter date when patient meets eligibility (≥2nd encounter, no duplicate history) and no duplicate created - <strong>Sequential design</strong>: Patients can have multiple entries as they become eligible at different encounters - <strong>Treatment switching</strong>: Single→Duplicate allowed, Duplicate→Single never allowed</p>
+<p><strong>Key issue you raised - gaps between encounters</strong>: This is crucial for your monthly risk difference calculations.</p>
+<p><strong>Questions about handling encounter gaps</strong>: 1. <strong>Risk period definition</strong>: If someone has 6-month gaps, how do you define their “at risk” status during months with no encounters? 2. <strong>Censoring approach</strong>: - Censor at last encounter date? - Assume continuous follow-up until next encounter? - Administrative censoring at fixed intervals? 3. <strong>Admission ascertainment</strong>: Can hospital admissions be detected even when no outpatient encounters occur?</p>
+<p>This affects your ability to calculate monthly risk differences. How do you want to handle these follow-up gaps?</p>
+</section>
+<section id="researcher-20" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-20">RESEARCHER</h3>
+<p>For each month in which we do not have any encounter data for an enrolled patient, we will assume that there is no admission, death, or new duplicate. If the last encounter for a patient ends before the study ends, we will censor that patient the month after their last encounter. Will that create bias?</p>
+</section>
+<section id="methodologist-21" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-21">METHODOLOGIST</h3>
+<p>Yes, this approach could create important biases. Let me walk through the concerns:</p>
+<p><strong>Potential biases:</strong></p>
+<ol type="1">
+<li><p><strong>Informative censoring</strong>: Patients who stop coming to your health system may be systematically different (sicker, moved, switched providers, died elsewhere). If duplicate vs.&nbsp;single MRN patients have different dropout patterns, this creates bias.</p></li>
+<li><p><strong>Outcome misclassification</strong>: Assuming “no admission” during gaps means you’ll miss:</p>
+<ul>
+<li>Hospital admissions at other health systems</li>
+<li>Deaths outside your system</li>
+<li>This could differentially affect groups if duplicate patients have different healthcare-seeking patterns</li>
+</ul></li>
+<li><p><strong>Competing risk misspecification</strong>: Missing deaths means your competing risk analysis will be biased.</p></li>
+</ol>
+<p><strong>Potential solutions:</strong> 1. <strong>Restrict follow-up</strong>: Only count time when patients are “actively engaged” (e.g., within X months of an encounter) 2. <strong>Claims data linkage</strong>: If available, to capture external admissions/deaths 3. <strong>Sensitivity analyses</strong>: Vary assumptions about gaps (e.g., immediate censoring vs.&nbsp;your current approach) 4. <strong>Shorter follow-up</strong>: Maybe 1 year instead of 3 years to minimize gap problems</p>
+<p>Given these constraints, would you like to modify your follow-up approach, or proceed with sensitivity analyses to assess the impact?</p>
+</section>
+<section id="researcher-21" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-21">RESEARCHER</h3>
+<p>We will need to conduct a sensitivity analysis and also adjust for informative censoring</p>
+</section>
+<section id="methodologist-22" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-22">METHODOLOGIST</h3>
+<p>Excellent approach! Let me confirm your treatment assignment operationalization:</p>
+<p><strong>Item 7b: Treatment Assignment Operationalization</strong> - <strong>Duplicate arm TIME ZERO</strong>: Date duplicate was created (per master patient index) - <strong>Single MRN arm TIME ZERO</strong>: Any encounter date when patient meets eligibility and no duplicate created - <strong>Sequential design</strong>: Multiple entries allowed, switching Single→Duplicate only - <strong>Follow-up gaps</strong>: Assume no events during months without encounters - <strong>Censoring</strong>: Month after last encounter if study period continues - <strong>Bias mitigation</strong>: Sensitivity analyses + adjustment for informative censoring</p>
+<p><strong>Confirmed!</strong></p>
+<p>Now let’s move to <strong>Item 7c: Assignment Operationalization</strong>.</p>
+<p>This overlaps with 7b but focuses on the technical implementation. You’ve described using the master patient index to identify duplicate creation dates.</p>
+<p><strong>Key questions:</strong> 1. <strong>Timing windows</strong>: Any grace period around duplicate creation? (e.g., if duplicate created 1 day after encounter, still count that encounter as TIME ZERO?)</p>
+<ol start="2" type="1">
+<li><p><strong>Data quality checks</strong>: How will you validate the master patient index data?</p></li>
+<li><p><strong>Edge cases</strong>: How will you handle:</p>
+<ul>
+<li>Duplicates created and resolved quickly?</li>
+<li>Multiple duplicates for same patient?</li>
+</ul></li>
+</ol>
+<p>How will you operationally implement this assignment algorithm?</p>
+</section>
+<section id="researcher-22" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-22">RESEARCHER</h3>
+<p>No grace period is needed for the timing window. We have already validated the MPI. We might need to consider the length of time a duplicate existed. We should probably censor patients with multiple duplicates.</p>
+</section>
+<section id="methodologist-23" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-23">METHODOLOGIST</h3>
+<p>Great! Let me confirm your assignment operationalization:</p>
+<p><strong>Item 7c: Assignment Operationalization</strong> - <strong>Implementation</strong>: Use validated master patient index (MPI) - <strong>No grace period</strong>: Exact date matching between encounters and duplicate creation - <strong>Multiple duplicates</strong>: Censor patients with &gt;1 duplicate record - <strong>Duration consideration</strong>: Account for length of time duplicate existed (exposure duration)</p>
+<p><strong>Question about duration</strong>: How will you incorporate duplicate duration into your analysis? - <strong>Time-varying exposure</strong>: Patients “treated” only while duplicate exists, then switch back to single MRN group when resolved? - <strong>Or permanent exposure</strong>: Once duplicate created, always in duplicate group regardless of resolution?</p>
+<p>Earlier you mentioned patients can’t switch back from duplicate group due to potential lasting effects. Does this mean permanent exposure, or will you track duration as a modifier?</p>
+<p><strong>Confirmed on the rest?</strong></p>
+<p>Now let’s move to <strong>Item 7d: Follow-up Operationalization</strong>.</p>
+<p>You’ve defined follow-up procedures. Key implementation questions:</p>
+<ol type="1">
+<li><strong>Monthly risk calculations</strong>: What date within each month will you use for risk assessment?</li>
+<li><strong>Administrative end date</strong>: Study end (12/1/2019) vs.&nbsp;3-year individual follow-up - which takes precedence?</li>
+</ol>
+<p>How will you operationally implement the follow-up procedures?</p>
+</section>
+<section id="researcher-23" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-23">RESEARCHER</h3>
+<p>Once duplicated they are always in the duplicate group.</p>
+</section>
+<section id="methodologist-24" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-24">METHODOLOGIST</h3>
+<p>Perfect! That confirms the permanent exposure approach.</p>
+<p><strong>Item 7c: Assignment Operationalization - CONFIRMED</strong> - Use validated MPI for duplicate detection - No grace period for timing - Censor patients with multiple duplicates<br>
+- <strong>Permanent exposure</strong>: Once duplicate created, always in duplicate group - Track duplicate duration as potential effect modifier</p>
+<p>Now for <strong>Item 7d: Follow-up Operationalization</strong>.</p>
+<p><strong>Key implementation questions:</strong></p>
+<ol type="1">
+<li><strong>Monthly risk assessment</strong>: What date within each month will define the risk calculation?
+<ul>
+<li>End of month?</li>
+<li>Monthly anniversaries from TIME ZERO?</li>
+<li>Calendar months (e.g., Jan 31, Feb 28, etc.)?</li>
+</ul></li>
+<li><strong>Follow-up end</strong>: Which takes precedence?
+<ul>
+<li>Individual 3-year follow-up from TIME ZERO?</li>
+<li>Administrative study end (12/1/2019)?</li>
+<li>Patient’s last encounter + 1 month (your censoring rule)?</li>
+</ul></li>
+<li><strong>Risk period definition</strong>: During months without encounters, how do you define the “at-risk” period?
+<ul>
+<li>Full month counted as at-risk?</li>
+<li>Only days until expected next encounter?</li>
+</ul></li>
+</ol>
+<p>How will you operationally implement these monthly follow-up assessments?</p>
+</section>
+<section id="researcher-24" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-24">RESEARCHER</h3>
+<p>We wil consider all events in a given month. For followup, the time should be based on time from time zero for each patient. We will have to adjust for calendar time in the analysis.</p>
+</section>
+<section id="methodologist-25" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-25">METHODOLOGIST</h3>
+<p>Excellent! Let me confirm your follow-up operationalization:</p>
+<p><strong>Item 7d: Follow-up Operationalization</strong> - <strong>Monthly assessment</strong>: All events occurring within each calendar month counted - <strong>Follow-up duration</strong>: Individual time from each patient’s TIME ZERO (not calendar-based) - <strong>Maximum follow-up</strong>: 3 years from individual TIME ZERO or study end (12/1/2019), whichever comes first - <strong>Censoring</strong>: Month after last encounter if no subsequent activity - <strong>Calendar time adjustment</strong>: Account for secular trends/calendar effects in analysis - <strong>Gap handling</strong>: Assume no events during months without encounters (with sensitivity analysis)</p>
+<p><strong>Confirmed!</strong></p>
+<p>Now let’s move to <strong>Item 7e: Outcomes Operationalization</strong>.</p>
+<p>You defined hospital admission as “any inpatient admission” excluding same-day as TIME ZERO.</p>
+<p><strong>Key implementation questions:</strong> 1. <strong>Admission identification</strong>: What specific codes/fields in your PCOR CDM identify inpatient admissions? 2. <strong>Same-day exclusion</strong>: How will you operationally exclude admissions on TIME ZERO date? 3. <strong>Multiple admissions</strong>: If patient has multiple admissions in same month, how counted? 4. <strong>Admission timing</strong>: Admission date vs.&nbsp;discharge date for monthly risk calculations?</p>
+<p>How will you identify hospital admissions in your observational data?</p>
+</section>
+<section id="researcher-25" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-25">RESEARCHER</h3>
+<p>IN months without encounters the full month is considered at-risk</p>
+</section>
+<section id="methodologist-26" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-26">METHODOLOGIST</h3>
+<p>Thanks for that clarification! Let me update Item 7d:</p>
+<p><strong>Item 7d: Follow-up Operationalization - UPDATED</strong> - <strong>Monthly assessment</strong>: All events occurring within each calendar month counted - <strong>At-risk time</strong>: Full month counted as at-risk, even without encounters - <strong>Follow-up duration</strong>: Individual time from each patient’s TIME ZERO - <strong>Maximum follow-up</strong>: 3 years from TIME ZERO or study end (12/1/2019), whichever comes first - <strong>Censoring</strong>: Month after last encounter if no subsequent activity - <strong>Calendar time adjustment</strong>: Account for secular trends in analysis - <strong>Gap handling</strong>: Assume no events during encounter gaps (with sensitivity analysis)</p>
+<p><strong>Confirmed!</strong></p>
+<p>Now for <strong>Item 7e: Outcomes Operationalization</strong>.</p>
+<p>You defined hospital admission as “any inpatient admission” excluding same-day as TIME ZERO.</p>
+<p><strong>Key implementation questions:</strong> 1. <strong>Admission identification</strong>: What specific encounter types/codes in your PCOR CDM identify inpatient admissions? 2. <strong>Same-day exclusion</strong>: How will you operationally exclude admissions on TIME ZERO date? 3. <strong>Multiple admissions</strong>: If patient has multiple admissions in same month, how are they counted? 4. <strong>Date field</strong>: Admission date vs.&nbsp;discharge date for monthly risk calculations?</p>
+<p>How will you operationally identify hospital admissions?</p>
+</section>
+<section id="researcher-26" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-26">RESEARCHER</h3>
+<p>We will identify the exact codes from the CDM. I don’t have them right now. If time zero aligns with the date of admission we can detect that. We will only ever count the first admission after time zero because that is the endpoint. During the study period, once a person is admitted he or she is no longer eligible for a mini-trial.</p>
+</section>
+<section id="methodologist-27" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-27">METHODOLOGIST</h3>
+<p>Perfect! That clarifies the endpoint nature of your outcome.</p>
+<p><strong>Item 7e: Outcomes Operationalization</strong> - <strong>Admission identification</strong>: Specific inpatient encounter types/codes from PCOR CDM (to be determined) - <strong>Same-day exclusion</strong>: Exclude if admission date = TIME ZERO date - <strong>First admission only</strong>: Time-to-first-admission endpoint - follow-up stops at first admission - <strong>Sequential trial impact</strong>: Once admitted, patient exits all future mini-trials (no longer eligible) - <strong>Monthly risk</strong>: Admission occurrence within each month from TIME ZERO</p>
+<p><strong>Confirmed!</strong></p>
+<p>Now let’s move to <strong>Item 7f: Contrasts Operationalization</strong>.</p>
+<p>You specified monthly risk differences using cumulative incidence with competing risks (death), plus RMST analysis, with FDR control and graphical presentation.</p>
+<p><strong>Implementation questions:</strong> 1. <strong>Monthly intervals</strong>: Calculate risk differences at 1, 2, 3…up to 36 months from each patient’s individual TIME ZERO? 2. <strong>Competing events</strong>: How will you identify deaths in your data? You mentioned incomplete death data - what’s available? 3. <strong>Risk calculation</strong>: Cumulative incidence accounting for competing risks at each monthly time point? 4. <strong>Pooling across mini-trials</strong>: How will you combine results across all the sequential mini-trials?</p>
+<p>How will you operationally calculate these contrasts?</p>
+</section>
+<section id="researcher-27" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-27">RESEARCHER</h3>
+<p>Yes we calculate risk diffrences for months 1 to 36 from time zero. We have some death data. If a patient was then died, we can ignore that death, because the admission came first. We will use what you suggest for items 3 and 4.</p>
+</section>
+<section id="methodologist-28" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-28">METHODOLOGIST</h3>
+<p>Excellent! Let me confirm your contrasts operationalization:</p>
+<p><strong>Item 7f: Contrasts Operationalization</strong> - <strong>Monthly risk differences</strong>: Calculate at months 1, 2, 3…36 from each individual TIME ZERO - <strong>Death handling</strong>: Use available death data as competing event; if admission occurs before death, ignore the death (admission is the endpoint) - <strong>Risk calculation</strong>: Cumulative incidence functions accounting for competing risks at each monthly time point - <strong>Sequential trial pooling</strong>: Combine results across all mini-trials using appropriate methods for sequential designs - <strong>Secondary analysis</strong>: RMST differences - <strong>Multiple comparisons</strong>: FDR control + graphical presentation of all monthly estimates</p>
+<p><strong>Confirmed!</strong></p>
+<p>Now <strong>Item 7g: Assumptions Operationalization</strong>.</p>
+<p>Your target trial assumptions need to be evaluated in observational data:</p>
+<p><strong>Key questions:</strong> 1. <strong>Exchangeability</strong>: How will you assess/ensure comparability between duplicate and single MRN groups at TIME ZERO? 2. <strong>Positivity</strong>: How will you check that both exposures are possible for eligible patients? 3. <strong>No interference</strong>: Any concerns about one patient’s duplicate status affecting others? 4. <strong>Missing data assessment</strong>: How will you evaluate the impact of incomplete death data and encounter gaps?</p>
+<p>What approaches will you use to assess these assumptions?</p>
+</section>
+<section id="researcher-28" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-28">RESEARCHER</h3>
+<p>FOr 1 we must use something like IPTW based on pretreatment covariates (demographics and CCI). Both exposures are always possible. There is no interference concerns. We will use sensitivity analysis for missing data assessment.</p>
+</section>
+<section id="methodologist-29" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-29">METHODOLOGIST</h3>
+<p>Perfect! Let me confirm your assumptions operationalization:</p>
+<p><strong>Item 7g: Assumptions Operationalization</strong> - <strong>Exchangeability</strong>: Use IPTW (Inverse Probability of Treatment Weighting) based on pre-treatment covariates: - Demographics - Charlson Comorbidity Index (CCI) - <strong>Positivity</strong>: Both exposures always possible for eligible patients (confirmed) - <strong>No interference</strong>: No concerns about spillover effects between patients - <strong>Missing data</strong>: Sensitivity analyses for incomplete death data and encounter gaps</p>
+<p><strong>Confirmed!</strong></p>
+<p>Finally, <strong>Item 7h: Analysis Operationalization</strong>.</p>
+<p>This specifies exactly how you’ll implement your analysis plan with observational data:</p>
+<p><strong>Key implementation details:</strong> 1. <strong>IPTW implementation</strong>: How will you calculate weights? Logistic regression predicting duplicate assignment? 2. <strong>Sequential trial analysis</strong>: How will you handle the multiple mini-trials analytically? Pooled analysis? Meta-analysis approach? 3. <strong>Cumulative incidence</strong>: Specific software/methods for competing risks analysis with IPTW? 4. <strong>FDR implementation</strong>: Across all 36 monthly comparisons? 5. <strong>Sensitivity analyses</strong>: What specific sensitivity approaches for missing data?</p>
+<p>How will you operationally implement the statistical analysis?</p>
+</section>
+<section id="researcher-29" class="level3">
+<h3 class="anchored" data-anchor-id="researcher-29">RESEARCHER</h3>
+<p>We can use the R package TrialEmulation to analyze the data since it supports both IPTW and IPCW. I’m not sure if it can give the cumulative risk difference. We can use pooled logistic regressionn as well.</p>
+</section>
+<section id="methodologist-30" class="level3">
+<h3 class="anchored" data-anchor-id="methodologist-30">METHODOLOGIST</h3>
+<p>Excellent! The TrialEmulation R package is perfect for this - it’s specifically designed for TARGET trial emulation with sequential trials.</p>
+<p><strong>Item 7h: Analysis Operationalization</strong> - <strong>Primary method</strong>: TrialEmulation R package for sequential trial analysis with IPTW and IPCW - <strong>Alternative approach</strong>: Pooled logistic regression - <strong>Risk differences</strong>: If TrialEmulation doesn’t directly output cumulative risk differences, can derive from survival curves or use pooled logistic regression coefficients - <strong>IPTW</strong>: For baseline confounding (demographics, CCI) - <strong>IPCW</strong>: For informative censoring due to encounter gaps - <strong>Sequential pooling</strong>: Package handles combining across mini-trials - <strong>FDR control</strong>: Across 36 monthly comparisons - <strong>Sensitivity analyses</strong>: Vary assumptions about missing data/gaps</p>
+<p><strong>Confirmed!</strong></p>
+<p>🎉 <strong>Congratulations! Your TARGET protocol is complete. You can now download it.</strong></p>
+<p>You’ve successfully designed a comprehensive observational study emulating a pragmatic target trial for studying duplicate EHR records’ effects on hospital admissions, with proper handling of time-varying exposures, competing risks, and sequential trial methodology!</p>
+<hr>
+<p><em>This protocol was developed using the TARGET Trial Design Assistant, following the TARGET (Transparent Reporting of Observational Studies Emulating a Target Trial) reporting guideline.</em></p>
+
+</section>
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-sahin2024" class="csl-entry" role="listitem">
+Sahin, Onur, Audrey Zhao, Reuben Joseph Applegate, Todd R. Johnson, and Elmer V. Bernstam. 2024. <span>“Epidemiology of Patient Record Duplication.”</span> <em>Applied Clinical Informatics</em> 16 (01): 024–30. <a href="https://doi.org/10.1055/a-2423-8499">https://doi.org/10.1055/a-2423-8499</a>.
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

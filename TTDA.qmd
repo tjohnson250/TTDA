@@ -6,7 +6,7 @@ editor: visual
 bibliography: references.bib
 ---
 
-This is main launch page to the latest version of an AI-powered Claude tool that will help you design a study to estimate causal effects from observational data.
+This is the main launch page to the latest version of an AI-powered Claude tool that will help you design a study to estimate causal effects from observational data.
 
 The tool uses the TARGET guidelines [@cashin2025] to walk you through the elements needed to design an ideal pragmatic clinical trial and then how to emulate that trial using observational data.
 

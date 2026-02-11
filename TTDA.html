@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -47,14 +47,15 @@ div.csl-indent {
 <script src="TTDA_files/libs/clipboard/clipboard.min.js"></script>
 <script src="TTDA_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="TTDA_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="TTDA_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="TTDA_files/libs/quarto-html/popper.min.js"></script>
 <script src="TTDA_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="TTDA_files/libs/quarto-html/anchor.min.js"></script>
 <link href="TTDA_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="TTDA_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="TTDA_files/libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="TTDA_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="TTDA_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="TTDA_files/libs/bootstrap/bootstrap-81267100e462c21b3d6c0d5bf76a3417.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="TTDA_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -97,7 +98,7 @@ div.csl-indent {
 <p>Once you click below, you will be asked to log in to Claude.ai. You must have a paid account to use the tool and your usage counts against your credit. However, in my opinion Claude is well worth the price and Claude Pro is sufficient for normal use.</p>
 <p>Please provide feedback at the GitHub repo: <a href="https://github.com/tjohnson250/TTDA" class="uri">https://github.com/tjohnson250/TTDA</a></p>
 <p>or by emailing me at todd.r.johnson@uth.tmc.edu</p>
-<iframe src="https://claude.site/public/artifacts/e6d45ee9-f72c-4863-8ae4-6672f0f41f5f/embed" title="Claude Artifact" width="100%" height="600" frameborder="0" allow="clipboard-write" allowfullscreen=""></iframe>
+<iframe src="https://claude.site/public/artifacts/d709c5e9-bc91-4376-8f6a-b071e363fc59/embed" title="Claude Artifact" width="100%" height="600" frameborder="0" allow="clipboard-write" allowfullscreen=""></iframe>
 
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
@@ -160,13 +161,14 @@ van Hal, Christina A., Elmer V. Bernstam, and Todd R. Johnson. 2025. <span>“Re
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

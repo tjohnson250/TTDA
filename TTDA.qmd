@@ -24,4 +24,5 @@ or by emailing me at todd.r.johnson\@uth.tmc.edu
 
 ```{=html}
 <iframe src="https://claude.site/public/artifacts/d709c5e9-bc91-4376-8f6a-b071e363fc59/embed" title="Claude Artifact" width="100%" height="600" frameborder="0" allow="clipboard-write" allowfullscreen></iframe>
+<p style="margin-top: 1em; text-align: center; font-style: italic;">If the tool does not load above, <a href="https://claude.ai/public/artifacts/d709c5e9-bc91-4376-8f6a-b071e363fc59" target="_blank" rel="noopener noreferrer">click here to open it directly on Claude.ai</a>.</p>
 ```

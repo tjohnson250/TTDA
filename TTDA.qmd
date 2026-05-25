@@ -25,6 +25,6 @@ or by emailing me at todd.r.johnson\@uth.tmc.edu
 ```{=html}
 <div style="text-align: center; margin: 2em 0;">
   <a href="https://claude.ai/public/artifacts/d709c5e9-bc91-4376-8f6a-b071e363fc59" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 1em 2em; background-color: #2563eb; color: #ffffff; font-size: 1.25em; font-weight: 600; text-decoration: none; border-radius: 0.5em; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Launch the TTDA Tool &rarr;</a>
-  <p style="margin-top: 1em; font-style: italic; color: #555;">Opens in a new tab on Claude.ai. A free Claude.ai account is required.</p>
+  <p style="margin-top: 1em; font-style: italic; color: #555;">Opens in a new tab on Claude.ai. A paid Claude.ai account is required (Claude Pro is sufficient).</p>
 </div>
 ```
